@@ -6,6 +6,7 @@ import {
   HiOutlinePencilSquare,
   HiOutlineTrash,
 } from "react-icons/hi2";
+import { API_URL } from "../../lib/api";
 
 const AdminCollections = () => {
   const [collections, setCollections] = useState([]);
@@ -20,7 +21,7 @@ const AdminCollections = () => {
 
   const fetchCollections = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/collections");
+      const res = await fetch(`${API_URL}/api/collections`);
       const data = await res.json();
       setCollections(Array.isArray(data) ? data : []);
     } catch {
@@ -38,7 +39,7 @@ const AdminCollections = () => {
     if (!confirm(`Delete "${slug}"? This cannot be undone.`)) return;
     setDeleting(slug);
     try {
-      await fetch(`http://localhost:5000/api/admin/collections/${slug}`, {
+      await fetch(`${API_URL}/api/admin/collections/${slug}`, {
         method: "DELETE",
         headers,
       });

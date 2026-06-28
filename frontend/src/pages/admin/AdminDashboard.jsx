@@ -6,6 +6,7 @@ import {
   HiOutlineRectangleStack,
   HiOutlinePlus,
 } from "react-icons/hi2";
+import { API_URL } from "../../lib/api";
 
 const StatCard = ({ label, count, icon: Icon, to }) => (
   <Link
@@ -34,12 +35,8 @@ const AdminDashboard = () => {
     const headers = { Authorization: `Bearer ${token}` };
 
     Promise.all([
-      fetch("http://localhost:5000/api/collections", { headers }).then((r) =>
-        r.json(),
-      ),
-      fetch("http://localhost:5000/api/projects", { headers }).then((r) =>
-        r.json(),
-      ),
+      fetch(`${API_URL}/api/collections`, { headers }).then((r) => r.json()),
+      fetch(`${API_URL}/api/projects`, { headers }).then((r) => r.json()),
     ])
       .then(([collections, projects]) => {
         setStats({

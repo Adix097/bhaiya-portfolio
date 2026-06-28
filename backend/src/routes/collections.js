@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const collections = await Collection.find()
-      .select("slug title coverImage metadata")
+      .select("slug title coverImage metadata featured")
       .sort({ createdAt: -1 });
     res.json(collections);
   } catch {
