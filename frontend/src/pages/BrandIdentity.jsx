@@ -1,27 +1,48 @@
 import BrandProjectCard from "../components/BrandProjectCard";
-
-const BRAND_PROJECTS = [
-  {
-    title: "Verda Organics",
-    category: "Brand Identity · 2024",
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80",
-    slug: "verda-organics",
-  },
-  {
-    title: "Cosmic Coffee",
-    category: "Brand Identity · 2023",
-    image:
-      "https://cdn.logojoy.com/wp-content/uploads/20190606100723/cosmic_coffee_scene-1024x576.jpg",
-    slug: "cosmic",
-  },
-];
+import useFetch from "../hooks/useFetch";
+import { getProjects } from "../lib/api";
 
 const BrandIdentity = () => {
+  const { data: projects, loading, error } = useFetch(getProjects);
+
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-5xl space-y-10">
+        {Array.from({ length: 2 }).map((_, i) => (
+          <div key={i} className="space-y-4">
+            <div className="aspect-video w-full rounded-2xl bg-(--surface-hover) animate-pulse" />
+            <div className="h-6 w-48 rounded bg-(--surface-hover) animate-pulse" />
+            <div className="h-4 w-24 rounded bg-(--surface-hover) animate-pulse" />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <p className="text-center text-(--muted-text) py-12">
+        Failed to load projects.
+      </p>
+    );
+  }
+
+  if (!projects?.length) {
+    return (
+      <p className="text-center text-(--muted-text) py-12">No projects yet.</p>
+    );
+  }
+
   return (
-    <div className="mx-auto space-y-10">
-      {BRAND_PROJECTS.map((project) => (
-        <BrandProjectCard key={project.slug} {...project} />
+    <div className="mx-auto max-w-5xl space-y-10">
+      {projects.map((project) => (
+        <BrandProjectCard
+          key={project.slug}
+          title={project.title}
+          category={`${project.category} · ${project.year}`}
+          image={project.coverImage.url}
+          slug={project.slug}
+        />
       ))}
     </div>
   );

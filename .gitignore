@@ -1,14 +1,11 @@
 # Dependencies
-
 node_modules/
 
 # Production build
-
 dist/
 build/
 
 # Logs
-
 logs
 *.log
 npm-debug.log*
@@ -17,15 +14,16 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Environment variables
-
 .env
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local
+
+# Keep these — no secrets, needed for deployment
+!.env.production
+!.env.example
 
 # Editor directories and files
-
 .vscode/
 .idea/
 *.swp
@@ -33,31 +31,28 @@ pnpm-debug.log*
 *~
 
 # OS files
-
 .DS_Store
 Thumbs.db
 
 # Cache
-
 .cache/
 .parcel-cache/
 .eslintcache
 
 # Vite
-
 vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 
 # Coverage
-
 coverage/
 
 # Temporary files
-
 tmp/
 temp/
 
 # Local Netlify/Vercel files
-
 .netlify/
 .vercel/
+
+# Nested git repos
+frontend/src/assets/fonts/gotham-fonts/.git

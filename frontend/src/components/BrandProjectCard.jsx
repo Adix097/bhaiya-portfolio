@@ -4,7 +4,7 @@ import ArrowRight from "./ArrowRight";
 const BrandProjectCard = ({ title, category, image, slug }) => {
   return (
     <Link to={`/work/${slug}`} className="group block">
-      <div className="overflow-hidden border border-(--border)">
+      <div className="overflow-hidden rounded-xl border border-(--border)">
         <img
           src={image}
           alt={title}

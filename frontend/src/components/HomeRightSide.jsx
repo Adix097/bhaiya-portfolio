@@ -6,7 +6,7 @@ const HomeRightSide = () => {
       {/* Ambient glow */}
       <div className="absolute -left-40 top-20 h-125 w-125 rounded-full bg-(--primary-cta)/10 blur-3xl" />
 
-      {/* Right-side image */}
+      {/* Image */}
       <div className="absolute inset-y-0 right-0 w-full md:w-[55%]">
         <img
           src={pfp}

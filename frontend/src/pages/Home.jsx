@@ -1,43 +1,28 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomeRightSide from "../components/HomeRightSide";
 import HomeLeftSide from "../components/HomeLeftSide";
 import ArrowRight from "../components/ArrowRight";
-
-const SELECTED_WORK = [
-  {
-    id: "fold-studio",
-    title: "Fold Studio",
-    category: "Illustration",
-    year: "2024",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
-  },
-  {
-    id: "ashwild-books",
-    title: "Ashwild Books",
-    category: "Illustration",
-    year: "2023",
-    image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
-  },
-  {
-    id: "linea-press",
-    title: "Linea Press",
-    category: "Illustration",
-    year: "2023",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-  },
-];
+import useFetch from "../hooks/useFetch";
+import { getCollections, getProjects } from "../lib/api";
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const workRef = useRef(null);
+
+  const { data: collections } = useFetch(getCollections);
+  const { data: projects } = useFetch(getProjects);
+
+  const featuredProject = projects?.find((p) => p.featured) ?? null;
+  const selectedWork = collections?.filter((c) => c.featured).slice(0, 3) ?? [];
+
   return (
-    <div className="antialiased scroll-smooth">
-      <section className="relative min-h-screen overflow-hidden">
+    <div className="antialiased">
+      {/* Hero */}
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
         <HomeRightSide />
         <HomeLeftSide />
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-10 left-6 md:left-12 lg:left-18 z-20">
           <div className="flex items-center gap-3">
             <div className="h-10 w-px bg-(--border) animate-[scrollPulse_1.8s_ease-in-out_infinite]" />
@@ -51,7 +36,7 @@ export default function Home() {
       </section>
 
       {/* Selected Work */}
-      <section className="px-6 md:px-12 lg:px-18 pt-24 pb-24">
+      <section ref={workRef} className="px-6 md:px-12 lg:px-18 pt-24 pb-24">
         <div className="flex items-end justify-between mb-10">
           <p className="text-base font-semibold font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
             Selected Work
@@ -66,61 +51,74 @@ export default function Home() {
         </div>
 
         <div className="w-full border border-(--border) rounded-4xl p-5 md:p-6 bg-(--surface-raised)">
-          {/* Featured */}
-          <Link to="/work" className="group block">
-            <div className="relative overflow-hidden rounded-3xl border border-(--border)">
-              <div className="aspect-21/6 bg-(--surface-hover)">
-                <img
-                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1600&q=80"
-                  alt="Verda Organics"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-8">
-                <p className="text-xs tracking-[0.25em] uppercase text-(--primary-cta)">
-                  Brand Identity
-                </p>
-                <h3 className="mt-2 text-4xl font-bold text-(--hero-text)">
-                  Verda Organics
-                </h3>
-              </div>
-            </div>
-          </Link>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-            {SELECTED_WORK.map((project) => (
-              <Link
-                key={project.id}
-                to={`/collections/${project.id}`}
-                className="group"
-              >
-                <div className="overflow-hidden rounded-3xl border border-(--border) bg-(--surface-hover)">
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-
-                  <div className="border-t border-(--border) p-5">
-                    <p className="text-[11px] tracking-[0.2em] uppercase text-(--primary-cta)">
-                      {project.category}
-                    </p>
-                    <h4 className="mt-2 text-lg font-semibold text-(--hero-text)">
-                      {project.title}
-                    </h4>
-                    <p className="mt-1 text-sm text-(--muted-text)">
-                      {project.year}
-                    </p>
-                  </div>
+          {/* Featured brand project */}
+          {featuredProject ? (
+            <Link to={`/work/${featuredProject.slug}`} className="group block">
+              <div className="relative overflow-hidden rounded-3xl border border-(--border)">
+                <div className="aspect-21/6 bg-(--surface-hover)">
+                  <img
+                    src={featuredProject.coverImage.url}
+                    alt={featuredProject.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
-              </Link>
-            ))}
+
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 p-8">
+                  <p className="text-xs tracking-[0.25em] uppercase text-(--primary-cta)">
+                    {featuredProject.category}
+                  </p>
+                  <h3 className="mt-2 text-4xl font-bold text-(--hero-text)">
+                    {featuredProject.title}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          ) : (
+            <div className="aspect-21/6 rounded-3xl bg-(--surface-hover) animate-pulse" />
+          )}
+
+          {/* Collections grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+            {selectedWork.length > 0
+              ? selectedWork.map((collection) => (
+                  <Link
+                    key={collection.slug}
+                    to={`/collections/${collection.slug}`}
+                    className="group"
+                  >
+                    <div className="overflow-hidden rounded-3xl border border-(--border) bg-(--surface-hover)">
+                      <div className="aspect-square overflow-hidden">
+                        <img
+                          src={collection.coverImage.url}
+                          alt={collection.title}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+
+                      <div className="border-t border-(--border) p-5">
+                        <p className="text-[11px] tracking-[0.2em] uppercase text-(--primary-cta)">
+                          Collection
+                        </p>
+                        <h4 className="mt-2 text-lg font-semibold text-(--hero-text)">
+                          {collection.title}
+                        </h4>
+                        {collection.metadata?.[0] && (
+                          <p className="mt-1 text-sm text-(--muted-text)">
+                            {collection.metadata[0].value}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                ))
+              : Array.from({ length: 3 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="aspect-square rounded-3xl bg-(--surface-hover) animate-pulse"
+                  />
+                ))}
           </div>
         </div>
       </section>

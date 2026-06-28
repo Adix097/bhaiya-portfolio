@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ArrowRight from "../components/ArrowRight";
+import { API_URL } from "../lib/api";
 
 const INITIAL_FORM = { name: "", email: "", subject: "", message: "" };
 
@@ -11,12 +12,34 @@ const Contact = () => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: wire up to backend
-    console.log(form);
-    setSubmitted(true);
-    setForm(INITIAL_FORM);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.message ?? "Failed to send. Try again.");
+        return;
+      }
+
+      setSubmitted(true);
+      setForm(INITIAL_FORM);
+    } catch {
+      setError("Could not reach server. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -24,7 +47,7 @@ const Contact = () => {
 
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24">
-      <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-[0.8fr_1fr]">
+      <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-[0.8fr_1fr] h-screen">
         <div>
           <p className="mb-4 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
             Contact
@@ -99,15 +122,20 @@ const Contact = () => {
               className={inputClass}
             />
 
+            {error && <p className="text-sm text-red-400">{error}</p>}
+
             <button
               type="submit"
-              className="group cursor-pointer inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300"
+              disabled={submitting}
+              className="group cursor-pointer inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
-              <ArrowRight
-                size={18}
-                className="transition-all duration-300 group-hover:translate-x-2"
-              />
+              {submitting ? "Sending..." : "Send Message"}
+              {!submitting && (
+                <ArrowRight
+                  size={18}
+                  className="transition-all duration-300 group-hover:translate-x-2"
+                />
+              )}
             </button>
           </form>
         )}

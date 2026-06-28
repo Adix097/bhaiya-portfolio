@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import ArrowRight from "../components/ArrowRight";
-import photo from "../assets/about-photo-3.jpeg";
+import photo from "../assets/about-photo.jpeg";
 import { HiOutlineArrowDownTray } from "react-icons/hi2";
 
 const About = () => {
   return (
-    <main className="px-6 md:px-12 lg:px-18 py-24 pt-32">
+    <main className="px-6 md:px-12 lg:px-18 py-24 pt-32 h-full">
       <section className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-[500px_1fr] lg:items-center">
           {/* Image */}
@@ -17,7 +17,7 @@ const About = () => {
             />
           </div>
 
-          {/* Content */}
+          {/* Bio */}
           <div>
             <p className="mb-4 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
               About Me
