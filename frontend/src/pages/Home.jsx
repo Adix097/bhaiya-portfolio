@@ -16,8 +16,6 @@ export default function Home() {
   const featuredProject = projects?.find((p) => p.featured) ?? null;
   const selectedWork = collections?.filter((c) => c.featured).slice(0, 3) ?? [];
 
-  console.log(collections);
-
   return (
     <div className="antialiased">
       {/* Hero */}
