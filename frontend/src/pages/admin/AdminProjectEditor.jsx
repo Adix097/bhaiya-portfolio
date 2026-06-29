@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminLayout from "../../components/AdminLayout";
 import ArrowRight from "../../components/ArrowRight";
-import { HiOutlineTrash, HiOutlinePhoto } from "react-icons/hi2";
 import { API_URL as API } from "../../lib/api";
+import { HiOutlineTrash, HiOutlinePhoto, HiOutlinePlus } from "react-icons/hi2";
 
 const AdminProjectEditor = () => {
   const { slug } = useParams();
@@ -27,6 +27,8 @@ const AdminProjectEditor = () => {
 
   const [presentationFile, setPresentationFile] = useState(null);
   const [presentationPreview, setPresentationPreview] = useState("");
+  const [description, setDescription] = useState("");
+  const [metadata, setMetadata] = useState([{ label: "", value: "" }]);
 
   const [featured, setFeatured] = useState(false);
 
@@ -56,6 +58,10 @@ const AdminProjectEditor = () => {
         setCoverPreview(data.coverImage?.url ?? "");
         setPresentationPreview(data.presentation?.url ?? "");
         setFeatured(data.featured ?? false);
+        setDescription(data.description ?? "");
+        setMetadata(
+          data.metadata?.length ? data.metadata : [{ label: "", value: "" }],
+        );
       })
       .finally(() => setLoading(false));
   }, [slug, isEditing]);
@@ -73,6 +79,18 @@ const AdminProjectEditor = () => {
     if (!res.ok || !data.url) throw new Error(data.message ?? "Upload failed");
     return data;
   };
+
+  const updateMetadata = (index, field, value) => {
+    setMetadata((prev) =>
+      prev.map((m, i) => (i === index ? { ...m, [field]: value } : m)),
+    );
+  };
+
+  const addMetadata = () =>
+    setMetadata((prev) => [...prev, { label: "", value: "" }]);
+
+  const removeMetadata = (index) =>
+    setMetadata((prev) => prev.filter((_, i) => i !== index));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -110,6 +128,8 @@ const AdminProjectEditor = () => {
         coverImage: coverData,
         presentation: presentationData,
         featured: featured,
+        description: description,
+        metadata: metadata.filter((m) => m.label && m.value),
       };
 
       const res = await fetch(
@@ -260,6 +280,62 @@ const AdminProjectEditor = () => {
             label="Click to upload cover image"
           />
         </div>
+        {/* Description */}
+        <div className="space-y-2">
+          <label className="text-sm text-(--muted-text)">Description</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Write a project summary..."
+            rows={5}
+            className="w-full rounded-xl border border-(--border) bg-(--surface-raised) px-4 py-3 text-(--hero-text) outline-none placeholder:text-(--muted-text) transition-colors duration-200 focus:border-(--primary-cta) resize-none"
+          />
+        </div>
+
+        {/* Metadata */}
+        <div className="space-y-3">
+          <label className="text-sm text-(--muted-text)">
+            Metadata{" "}
+            <span className="text-xs opacity-60">
+              (e.g. Segment: Logo & Branding, Niche: Health & Wellness)
+            </span>
+          </label>
+
+          {metadata.map((m, index) => (
+            <div key={index} className="flex items-center gap-3">
+              <input
+                type="text"
+                value={m.label}
+                onChange={(e) => updateMetadata(index, "label", e.target.value)}
+                placeholder="Label"
+                className={`${inputClass} flex-1`}
+              />
+              <input
+                type="text"
+                value={m.value}
+                onChange={(e) => updateMetadata(index, "value", e.target.value)}
+                placeholder="Value"
+                className={`${inputClass} flex-1`}
+              />
+              <button
+                type="button"
+                onClick={() => removeMetadata(index)}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-(--border) text-(--muted-text) hover:text-red-400 hover:border-red-400 transition-colors"
+              >
+                <HiOutlineTrash size={14} />
+              </button>
+            </div>
+          ))}
+
+          <button
+            type="button"
+            onClick={addMetadata}
+            className="inline-flex items-center gap-2 text-sm text-(--muted-text) hover:text-(--hero-text) transition-colors"
+          >
+            <HiOutlinePlus size={14} />
+            Add field
+          </button>
+        </div>
 
         {/* Presentation PNG */}
         <div className="space-y-2">
@@ -282,7 +358,7 @@ const AdminProjectEditor = () => {
               setPresentationPreview("");
             }}
             label="Click to upload presentation PNG"
-            accept="image/png"
+            accept="image/png,image/jpeg,image/jpg"
           />
         </div>
 

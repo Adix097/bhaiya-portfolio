@@ -16,10 +16,16 @@ const BrandProjectDetail = () => {
     return (
       <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
         <div className="h-4 w-24 rounded bg-(--surface-hover) animate-pulse mb-12" />
-        <div className="h-[50vh] w-full rounded-2xl bg-(--surface-hover) animate-pulse mb-8" />
-        <div className="space-y-4 max-w-2xl">
-          <div className="h-8 w-64 rounded bg-(--surface-hover) animate-pulse" />
-          <div className="h-4 w-full rounded bg-(--surface-hover) animate-pulse" />
+        <div className="aspect-video w-full rounded-2xl bg-(--surface-hover) animate-pulse mb-12" />
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div className="space-y-3">
+            <div className="h-4 w-full rounded bg-(--surface-hover) animate-pulse" />
+            <div className="h-4 w-3/4 rounded bg-(--surface-hover) animate-pulse" />
+          </div>
+          <div className="space-y-3">
+            <div className="h-4 w-48 rounded bg-(--surface-hover) animate-pulse" />
+            <div className="h-4 w-32 rounded bg-(--surface-hover) animate-pulse" />
+          </div>
         </div>
       </main>
     );
@@ -41,7 +47,6 @@ const BrandProjectDetail = () => {
 
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
-      {/* Back */}
       <Link
         to="/work"
         className="inline-flex items-center gap-2 text-sm text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
@@ -50,7 +55,7 @@ const BrandProjectDetail = () => {
       </Link>
 
       {/* Cover */}
-      <div className="relative overflow-hidden rounded-3xl border border-(--border) mb-16">
+      <div className="relative overflow-hidden rounded-3xl border border-(--border) mb-12">
         <img
           src={project.coverImage.url}
           alt={project.title}
@@ -58,16 +63,44 @@ const BrandProjectDetail = () => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 md:p-12">
-          <p className="text-xs tracking-[0.25em] uppercase text-(--primary-cta) mb-2">
-            {project.category} · {project.year}
-          </p>
           <h1 className="font-outfit text-4xl md:text-6xl font-bold text-(--hero-text)">
             {project.title}
           </h1>
         </div>
       </div>
 
-      {/* Presentation */}
+      {/* Project Info*/}
+      {(project.description || project.metadata?.length > 0) && (
+        <div className="grid gap-12 lg:grid-cols-[1fr_320px] mb-16 pb-16 border-b border-(--border)">
+          {/* Description */}
+          {project.description && (
+            <div>
+              <p className="mb-3 text-base font-bold font-outfit uppercase text-(--primary-cta)">
+                Description
+              </p>
+              <p className="text-lg leading-relaxed text-(--muted-text)">
+                {project.description}
+              </p>
+            </div>
+          )}
+
+          {/* Metadata */}
+          {project.metadata?.length > 0 && (
+            <div className="space-y-6">
+              {project.metadata.map(({ label, value }) => (
+                <div key={label}>
+                  <p className="text-base font-bold font-outfit uppercase text-(--primary-cta) mb-1">
+                    {label}
+                  </p>
+                  <p className="text-base text-(--hero-text)">{value}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Presentation image */}
       {project.presentation?.url && (
         <div className="mb-16">
           <img

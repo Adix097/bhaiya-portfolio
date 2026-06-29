@@ -49,7 +49,7 @@ const Collections = () => {
             className="w-full object-cover"
           />
 
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-xl">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <h3 className="font-outfit text-xl font-semibold text-white">
               {collection.title}
             </h3>
