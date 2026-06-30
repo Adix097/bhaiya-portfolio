@@ -36,26 +36,35 @@ const Collections = () => {
 
   return (
     <div className="columns-2 gap-3 md:columns-3 xl:columns-4">
-      {collections.map((collection) => (
-        <Link
-          key={collection.slug}
-          to={`/collections/${collection.slug}`}
-          className="group relative mb-3 block break-inside-avoid overflow-hidden"
-        >
-          <img
-            src={collection.coverImage.url}
-            alt={collection.title}
-            loading="lazy"
-            className="w-full object-cover"
-          />
+      {collections.map((collection) => {
+        const medium = collection.metadata?.find(
+          (m) => m.label === "Medium",
+        )?.value;
 
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <h3 className="font-outfit text-xl font-semibold text-white">
-              {collection.title}
-            </h3>
-          </div>
-        </Link>
-      ))}
+        return (
+          <Link
+            key={collection.slug}
+            to={`/collections/${collection.slug}`}
+            className="group relative mb-3 block break-inside-avoid overflow-hidden"
+          >
+            <img
+              src={collection.coverImage.url}
+              alt={medium}
+              loading="lazy"
+              className="w-full object-cover"
+            />
+
+            <div className="absolute inset-0 flex flex-col items-center text-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <h3 className="font-outfit text-xl p-5 font-semibold text-white">
+                {medium}
+              </h3>
+              <p className="font-outfit text-sm text-(--muted-text) mt-1">
+                {collection.title}
+              </p>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

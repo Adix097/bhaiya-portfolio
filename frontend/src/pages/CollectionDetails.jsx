@@ -4,6 +4,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArrowRight from "../components/ArrowRight";
 import useFetch from "../hooks/useFetch";
 import { getCollection } from "../lib/api";
+import Lightbox from "../components/Lightbox";
 
 const CollectionDetail = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const CollectionDetail = () => {
     error,
   } = useFetch(() => getCollection(id), [id]);
   const [activeImage, setActiveImage] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (loading) {
     return (
@@ -59,15 +61,18 @@ const CollectionDetail = () => {
         <HiChevronLeft size={16} /> Back to Work
       </Link>
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_320px]">
+      <div className="grid gap-12 lg:grid-cols-[1fr_500px]">
         {/* Image viewer */}
         <div>
-          <div className="overflow-hidden rounded-2xl border border-(--border)">
+          <div
+            className="flex items-center justify-center max-h-[70vh] overflow-hidden cursor-zoom-in"
+            onClick={() => setLightboxOpen(true)}
+          >
             <img
+              className="max-h-[70vh] w-full object-contain"
               key={activeImage}
               src={images[activeImage]?.url ?? collection.coverImage.url}
               alt={collection.title}
-              className="max-h-[70vh] w-full object-cover"
             />
           </div>
 
@@ -118,12 +123,12 @@ const CollectionDetail = () => {
 
         {/* Metadata */}
         <aside>
-          <h1 className="font-outfit text-4xl font-bold text-(--hero-text)">
+          <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
             {collection.title}
           </h1>
 
           {collection.description && (
-            <p className="mt-4 text-base leading-relaxed text-(--muted-text)">
+            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text)">
               {collection.description}
             </p>
           )}
@@ -151,6 +156,17 @@ const CollectionDetail = () => {
           </Link>
         </aside>
       </div>
+
+      {lightboxOpen && (
+        <Lightbox
+          src={images[activeImage]?.url ?? collection.coverImage.url}
+          alt={collection.title}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={prev}
+          onNext={next}
+          hasMultiple={total > 1}
+        />
+      )}
     </main>
   );
 };
