@@ -50,13 +50,13 @@ const AdminLogin = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="mb-10">
-          <p className="mb-3 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-3 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
             Admin
           </p>
-          <h1 className="text-4xl font-bold text-(--hero-text)">
+          <h1 className="text-section-heading font-semibold text-(--hero-text)">
             Welcome back.
           </h1>
-          <p className="mt-3 text-base text-(--muted-text)">
+          <p className="mt-3 text-large-body text-(--muted-text)">
             Sign in to manage the portfolio.
           </p>
         </div>

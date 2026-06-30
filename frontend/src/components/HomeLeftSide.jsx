@@ -5,14 +5,14 @@ const HomeLeftSide = () => {
   return (
     <div className="relative z-20 flex min-h-screen items-center px-6 md:px-12 lg:px-18">
       <div className="max-w-4xl animate-[fadeUp_0.8s_ease-out]">
-        <h1 className="font-bold leading-tight tracking-tight text-[clamp(40px,6vw,74px)] text-(--hero-text)">
+        <h1 className="text-hero font-bold text-(--hero-text)">
           I'm Saurav Vishwakarma, <br />
           <span className="text-(--primary-cta)">
             Graphic Designer <br />& Illustrator
           </span>
         </h1>
 
-        <p className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-(--muted-text)">
+        <p className="mt-8 max-w-xl text-[19px] leading-[1.7] font-normal text-(--muted-text)">
           Building brand identities that hold their nerve and illustrations that
           say what words don't. Based in Delhi, available worldwide.
         </p>

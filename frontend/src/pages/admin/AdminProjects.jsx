@@ -56,10 +56,10 @@ const AdminProjects = () => {
       {/* Header */}
       <div className="mb-10 flex items-center justify-between">
         <div>
-          <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-2 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
             Manage
           </p>
-          <h1 className="text-3xl font-bold text-(--hero-text)">
+          <h1 className="text-section-heading font-semibold text-(--hero-text)">
             Brand Projects
           </h1>
         </div>

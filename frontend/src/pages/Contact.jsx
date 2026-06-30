@@ -47,19 +47,19 @@ const Contact = () => {
 
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24">
-      <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-[0.8fr_1fr] h-screen">
+      <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-[0.8fr_1fr]">
         <div>
-          <p className="mb-4 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-4 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
             Contact
           </p>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
+          <h1 className="text-hero font-bold leading-tight text-(--hero-text)">
             Let's build
             <br />
             something great.
           </h1>
 
-          <p className="mt-8 max-w-md text-lg leading-relaxed text-(--muted-text)">
+          <p className="mt-8 max-w-md text-body font-normal text-(--muted-text) text-[19px] leading-[1.7]">
             Have a project in mind, a collaboration opportunity, or just want to
             say hello? Fill out the form and I'll get back to you soon.
           </p>
@@ -69,10 +69,10 @@ const Contact = () => {
         {submitted ? (
           <div className="flex items-center">
             <div>
-              <h2 className="text-3xl font-bold text-(--hero-text)">
+              <h2 className="text-card-heading text-(--hero-text)">
                 Message received.
               </h2>
-              <p className="mt-4 text-lg text-(--muted-text)">
+              <p className="mt-4 text-body text-(--muted-text)">
                 Thanks for reaching out — I'll get back to you shortly.
               </p>
               <button

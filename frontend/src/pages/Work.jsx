@@ -18,7 +18,7 @@ const Work = () => {
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`pb-2 text-lg cursor-pointer transition-colors duration-200 ${
+              className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${
                 activeTab === key
                   ? "border-b-2 border-(--hero-text) font-semibold text-(--hero-text)"
                   : "font-normal text-(--muted-text) hover:text-(--hero-text)"

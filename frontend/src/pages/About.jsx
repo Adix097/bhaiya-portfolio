@@ -19,17 +19,17 @@ const About = () => {
 
           {/* Bio */}
           <div>
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
+            <p className="mb-4 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
               About Me
             </p>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
+            <h1 className="text-hero font-bold leading-tight text-(--hero-text)">
               Designer first,
               <br />
               storyteller always.
             </h1>
 
-            <div className="mt-8 max-w-2xl space-y-6 text-lg leading-relaxed text-(--muted-text)">
+            <div className="mt-8 max-w-2xl space-y-6 text-body font-normal text-(--muted-text)">
               <p>
                 I'm Saurav Vishwakarma, a graphic designer focused on brand
                 identity, visual systems, and illustration. I enjoy creating
@@ -65,7 +65,7 @@ const About = () => {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center gap-2 text-base font-medium text-(--muted-text) transition-colors duration-300 hover:text-(--hero-text)"
+                className="inline-flex items-center gap-2 text-secondary font-medium text-(--muted-text) transition-colors duration-300 hover:text-(--hero-text)"
               >
                 Download CV
                 <HiOutlineArrowDownTray size={18} />

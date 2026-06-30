@@ -14,8 +14,8 @@ const BrandProjectCard = ({ title, category, image, slug }) => {
 
       <div className="mt-5 flex items-center justify-between">
         <div>
-          <h3 className="text-2xl font-bold text-(--hero-text)">{title}</h3>
-          <p className="mt-1 text-sm text-(--muted-text)">{category}</p>
+          <h3 className="text-card-heading font-semibold text-(--hero-text)">{title}</h3>
+          <p className="mt-1 text-secondary text-(--muted-text)">{category}</p>
         </div>
 
         <ArrowRight

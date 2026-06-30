@@ -38,7 +38,7 @@ const CollectionDetail = () => {
         <p className="text-lg text-(--muted-text)">Collection not found.</p>
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 text-sm text-(--primary-cta) hover:text-(--hero-text) transition-colors"
+          className="inline-flex items-center gap-2 text-secondary text-(--primary-cta) hover:text-(--hero-text) transition-colors"
         >
           <HiChevronLeft size={16} /> Back to Work
         </Link>
@@ -56,7 +56,7 @@ const CollectionDetail = () => {
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
       <Link
         to="/work"
-        className="inline-flex items-center gap-2 text-sm text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
+        className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
       >
         <HiChevronLeft size={16} /> Back to Work
       </Link>
@@ -123,12 +123,12 @@ const CollectionDetail = () => {
 
         {/* Metadata */}
         <aside>
-          <h1 className="text-3xl font-bold text-(--hero-text)">
+          <h1 className="text-3xl font-semibold text-(--hero-text)">
             {collection.title}
           </h1>
 
           {collection.description && (
-            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text)">
+            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) font-normal">
               {collection.description}
             </p>
           )}

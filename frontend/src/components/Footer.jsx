@@ -46,7 +46,7 @@ const socials = [
 const Footer = () => {
   return (
     <footer className="flex flex-wrap items-center justify-between gap-6 border-t border-(--border) bg-(--background) px-6 py-7 md:px-12 lg:px-18">
-      <p className="m-0 text-base text-(--muted-text)">
+      <p className="m-0 text-secondary text-(--muted-text)">
         © {new Date().getFullYear()} Saurav Vishwakarma. All rights reserved.
       </p>
 

@@ -23,6 +23,7 @@ const AdminCollectionEditor = () => {
   const [coverImage, setCoverImage] = useState(null);
   const [coverPreview, setCoverPreview] = useState("");
   const [images, setImages] = useState([]);
+  const [existingImages, setExistingImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [description, setDescription] = useState("");
   const [featured, setFeatured] = useState(false);
@@ -54,6 +55,7 @@ const AdminCollectionEditor = () => {
           data.metadata?.length ? data.metadata : [{ label: "", value: "" }],
         );
         setCoverPreview(data.coverImage?.url ?? "");
+        setExistingImages(data.images ?? []);
         setImagePreviews(data.images?.map((img) => img.url) ?? []);
         setDescription(data.description ?? "");
         setFeatured(data.featured ?? false);
@@ -114,7 +116,14 @@ const AdminCollectionEditor = () => {
   };
 
   const removeImage = (index) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
+    if (index < existingImages.length) {
+      setExistingImages((prev) => prev.filter((_, i) => i !== index));
+    } else {
+      const newIndex = index - existingImages.length;
+
+      setImages((prev) => prev.filter((_, i) => i !== newIndex));
+    }
+
     setImagePreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -145,11 +154,13 @@ const AdminCollectionEditor = () => {
         images.map((file) => uploadFile(file, "portfolio/collections")),
       );
 
+      const allImages = [...existingImages, ...uploadedImages];
+
       const payload = {
         title,
         slug: collectionSlug,
         coverImage: coverData,
-        images: uploadedImages,
+        images: allImages,
         description: description,
         featured: featured,
         metadata: metadata.filter((m) => m.label && m.value),
@@ -195,10 +206,10 @@ const AdminCollectionEditor = () => {
     <AdminLayout>
       {/* Header */}
       <div className="mb-10">
-        <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
+        <p className="mb-2 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
           {isEditing ? "Edit" : "New"}
         </p>
-        <h1 className="text-3xl font-bold text-(--hero-text)">
+        <h1 className="text-section-heading font-semibold text-(--hero-text)">
           {isEditing ? "Edit Collection" : "New Collection"}
         </h1>
       </div>
@@ -206,7 +217,7 @@ const AdminCollectionEditor = () => {
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-8">
         {/* Title */}
         <div className="space-y-2">
-          <label className="text-sm text-(--muted-text)">Title</label>
+          <label className="text-label text-(--muted-text)">Title</label>
           <input
             type="text"
             value={title}
@@ -235,7 +246,7 @@ const AdminCollectionEditor = () => {
 
         {/* Cover Image */}
         <div className="space-y-2">
-          <label className="text-sm text-(--muted-text)">Cover Image</label>
+          <label className="text-label text-(--muted-text)">Cover Image</label>
           {coverPreview ? (
             <div className="relative w-full overflow-hidden rounded-xl border border-(--border)">
               <img

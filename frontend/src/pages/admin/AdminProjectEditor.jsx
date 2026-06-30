@@ -206,10 +206,10 @@ const AdminProjectEditor = () => {
   return (
     <AdminLayout>
       <div className="mb-10">
-        <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
+        <p className="mb-2 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
           {isEditing ? "Edit" : "New"}
         </p>
-        <h1 className="text-3xl font-bold text-(--hero-text)">
+        <h1 className="text-section-heading font-semibold text-(--hero-text)">
           {isEditing ? "Edit Project" : "New Brand Project"}
         </h1>
       </div>
@@ -218,7 +218,7 @@ const AdminProjectEditor = () => {
         {/* Basic info */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <label className="text-sm text-(--muted-text)">Title</label>
+            <label className="text-label text-(--muted-text)">Title</label>
             <input
               type="text"
               value={title}
@@ -229,7 +229,7 @@ const AdminProjectEditor = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm text-(--muted-text)">Slug</label>
+            <label className="text-label text-(--muted-text)">Slug</label>
             <input
               type="text"
               value={projectSlug}
@@ -240,7 +240,7 @@ const AdminProjectEditor = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm text-(--muted-text)">Category</label>
+            <label className="text-label text-(--muted-text)">Category</label>
             <input
               type="text"
               value={category}
@@ -251,7 +251,7 @@ const AdminProjectEditor = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm text-(--muted-text)">Year</label>
+            <label className="text-label text-(--muted-text)">Year</label>
             <input
               type="text"
               value={year}
@@ -264,7 +264,7 @@ const AdminProjectEditor = () => {
 
         {/* Cover image */}
         <div className="space-y-2">
-          <label className="text-sm text-(--muted-text)">Cover Image</label>
+          <label className="text-label text-(--muted-text)">Cover Image</label>
           <UploadBox
             preview={coverPreview}
             onFileChange={(e) => {
@@ -282,7 +282,7 @@ const AdminProjectEditor = () => {
         </div>
         {/* Description */}
         <div className="space-y-2">
-          <label className="text-sm text-(--muted-text)">Description</label>
+          <label className="text-label text-(--muted-text)">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -330,7 +330,7 @@ const AdminProjectEditor = () => {
           <button
             type="button"
             onClick={addMetadata}
-            className="inline-flex items-center gap-2 text-sm text-(--muted-text) hover:text-(--hero-text) transition-colors"
+            className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors"
           >
             <HiOutlinePlus size={14} />
             Add field

@@ -37,7 +37,7 @@ const BrandProjectDetail = () => {
         <p className="text-lg text-(--muted-text)">Project not found.</p>
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 text-sm text-(--primary-cta) hover:text-(--hero-text) transition-colors"
+          className="inline-flex items-center gap-2 text-secondary text-(--primary-cta) hover:text-(--hero-text) transition-colors"
         >
           <HiChevronLeft size={16} /> Back to Work
         </Link>
@@ -49,7 +49,7 @@ const BrandProjectDetail = () => {
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
       <Link
         to="/work"
-        className="inline-flex items-center gap-2 text-sm text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
+        className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
       >
         <HiChevronLeft size={16} /> Back to Work
       </Link>
@@ -63,7 +63,7 @@ const BrandProjectDetail = () => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 md:p-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-(--hero-text)">
+          <h1 className="text-hero font-bold text-(--hero-text)">
             {project.title}
           </h1>
         </div>
@@ -75,10 +75,10 @@ const BrandProjectDetail = () => {
           {/* Description */}
           {project.description && (
             <div>
-              <p className="mb-3 text-base font-bold  uppercase text-(--primary-cta)">
+              <p className="mb-3 text-label font-medium uppercase text-(--primary-cta)">
                 Description
               </p>
-              <p className="text-lg leading-relaxed text-(--muted-text)">
+              <p className="text-body font-normal text-(--muted-text)">
                 {project.description}
               </p>
             </div>
@@ -89,10 +89,10 @@ const BrandProjectDetail = () => {
             <div className="space-y-6">
               {project.metadata.map(({ label, value }) => (
                 <div key={label}>
-                  <p className="text-base font-bold  uppercase text-(--primary-cta) mb-1">
+                  <p className="text-label font-medium uppercase text-(--primary-cta) mb-1">
                     {label}
                   </p>
-                  <p className="text-base text-(--hero-text)">{value}</p>
+                  <p className="text-body font-normal text-(--hero-text)">{value}</p>
                 </div>
               ))}
             </div>

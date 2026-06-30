@@ -26,7 +26,7 @@ export default function Home() {
         <div className="absolute bottom-10 left-6 md:left-12 lg:left-18 z-20">
           <div className="flex items-center gap-3">
             <div className="h-10 w-px bg-(--border) animate-[scrollPulse_1.8s_ease-in-out_infinite]" />
-            <span className="text-xs uppercase tracking-[0.25em] text-(--muted-text)">
+            <span className="text-label uppercase tracking-[0.25em] text-(--muted-text)">
               Scroll
             </span>
           </div>
@@ -38,13 +38,13 @@ export default function Home() {
       {/* Selected Work */}
       <section ref={workRef} className="px-6 md:px-12 lg:px-18 pt-24 pb-24">
         <div className="flex items-end justify-between mb-10">
-          <p className="text-base font-semibold  uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
             Selected Work
           </p>
 
           <Link
             to="/work"
-            className="hidden md:inline-flex items-center gap-2 text-base text-(--muted-text) hover:text-(--hero-text) transition-colors"
+            className="hidden md:inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors"
           >
             View All <ArrowRight size={16} />
           </Link>
@@ -66,10 +66,10 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 p-8">
-                  <p className="text-xs tracking-[0.25em] uppercase text-(--primary-cta)">
+                  <p className="text-label font-medium tracking-[0.25em] uppercase text-(--primary-cta)">
                     {featuredProject.category}
                   </p>
-                  <h3 className="mt-2 text-4xl font-bold text-(--hero-text)">
+                  <h3 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
                     {featuredProject.title}
                   </h3>
                 </div>
@@ -98,14 +98,14 @@ export default function Home() {
                       </div>
 
                       <div className="border-t border-(--border) p-5">
-                        <p className="text-[11px] tracking-[0.2em] uppercase text-(--primary-cta)">
+                        <p className="text-label font-medium tracking-[0.2em] uppercase text-(--primary-cta)">
                           Collection
                         </p>
-                        <h4 className="mt-2 text-lg font-semibold text-(--hero-text)">
+                        <h4 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
                           {collection.title}
                         </h4>
                         {collection.metadata?.[0] && (
-                          <p className="mt-1 text-sm text-(--muted-text)">
+                          <p className="mt-1 text-secondary text-(--muted-text)">
                             {collection.metadata[0].value}
                           </p>
                         )}
