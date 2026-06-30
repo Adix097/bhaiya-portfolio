@@ -1,11 +1,10 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 @theme {
-  --font-outfit: "Outfit", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-dm: "DM Sans", sans-serif;
+  --font-sans: "Poppins", sans-serif;
+  --font-cta: "Inter", sans-serif;
 }
 
 html,
@@ -14,6 +13,7 @@ body,
   min-height: 100%;
   background-color: var(--background);
   color: var(--hero-text);
+  font-family: var(--font-sans);
 }
 
 ::-webkit-scrollbar {

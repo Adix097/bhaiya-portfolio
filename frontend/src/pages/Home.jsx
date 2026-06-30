@@ -38,7 +38,7 @@ export default function Home() {
       {/* Selected Work */}
       <section ref={workRef} className="px-6 md:px-12 lg:px-18 pt-24 pb-24">
         <div className="flex items-end justify-between mb-10">
-          <p className="text-base font-semibold font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="text-base font-semibold  uppercase tracking-[0.3em] text-(--primary-cta)">
             Selected Work
           </p>
 

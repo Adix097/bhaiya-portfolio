@@ -63,7 +63,7 @@ const BrandProjectDetail = () => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 md:p-12">
-          <h1 className="font-outfit text-4xl md:text-6xl font-bold text-(--hero-text)">
+          <h1 className="text-4xl md:text-6xl font-bold text-(--hero-text)">
             {project.title}
           </h1>
         </div>
@@ -75,7 +75,7 @@ const BrandProjectDetail = () => {
           {/* Description */}
           {project.description && (
             <div>
-              <p className="mb-3 text-base font-bold font-outfit uppercase text-(--primary-cta)">
+              <p className="mb-3 text-base font-bold  uppercase text-(--primary-cta)">
                 Description
               </p>
               <p className="text-lg leading-relaxed text-(--muted-text)">
@@ -89,7 +89,7 @@ const BrandProjectDetail = () => {
             <div className="space-y-6">
               {project.metadata.map(({ label, value }) => (
                 <div key={label}>
-                  <p className="text-base font-bold font-outfit uppercase text-(--primary-cta) mb-1">
+                  <p className="text-base font-bold  uppercase text-(--primary-cta) mb-1">
                     {label}
                   </p>
                   <p className="text-base text-(--hero-text)">{value}</p>
@@ -113,7 +113,7 @@ const BrandProjectDetail = () => {
 
       {/* CTA */}
       <div className="border-t border-(--border) pt-12">
-        <p className="text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta) mb-4">
+        <p className="text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta) mb-4">
           Interested in working together?
         </p>
         <Link

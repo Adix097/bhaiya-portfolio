@@ -55,10 +55,8 @@ const Collections = () => {
             />
 
             <div className="absolute inset-0 flex flex-col items-center text-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <h3 className="font-outfit text-xl p-5 font-semibold text-white">
-                {medium}
-              </h3>
-              <p className="font-outfit text-sm text-(--muted-text) mt-1">
+              <h3 className="text-xl p-5 font-semibold text-white">{medium}</h3>
+              <p className="text-sm text-(--muted-text) mt-1">
                 {collection.title}
               </p>
             </div>

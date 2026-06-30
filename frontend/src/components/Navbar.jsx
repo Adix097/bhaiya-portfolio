@@ -29,7 +29,7 @@ const Navbar = () => {
             <li key={to}>
               <Link
                 to={to}
-                className={`font-outfit text-base transition-colors duration-200 ${
+                className={`text-base transition-colors duration-200 ${
                   active
                     ? "font-semibold text-(--primary-cta)"
                     : "font-normal text-(--muted-text) hover:text-(--hero-text)"

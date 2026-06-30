@@ -50,10 +50,10 @@ const AdminLogin = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="mb-10">
-          <p className="mb-3 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-3 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
             Admin
           </p>
-          <h1 className="font-outfit text-4xl font-bold text-(--hero-text)">
+          <h1 className="text-4xl font-bold text-(--hero-text)">
             Welcome back.
           </h1>
           <p className="mt-3 text-base text-(--muted-text)">
@@ -88,7 +88,7 @@ const AdminLogin = () => {
           <button
             type="submit"
             disabled={loading}
-            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Signing in..." : "Sign In"}
             {!loading && (

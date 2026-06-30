@@ -11,7 +11,7 @@ const HomeRightSide = () => {
         <img
           src={pfp}
           alt="Saurav Vishwakarma"
-          className=" h-full w-full object-cover object-center animate-[heroZoom_8s_ease-out_forwards]"
+         className="h-full w-full object-cover object-center animate-[heroZoom_8s_ease-out_forwards]"
         />
       </div>
 

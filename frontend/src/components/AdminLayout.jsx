@@ -42,7 +42,7 @@ const AdminLayout = ({ children }) => {
       <aside className="fixed inset-y-0 left-0 w-60 flex flex-col border-r border-(--border) bg-(--surface-raised)">
         {/* Logo */}
         <div className="flex h-16 items-center px-6 border-b border-(--border)">
-          <span className="font-outfit font-semibold text-(--hero-text)">
+          <span className="font-semibold text-(--hero-text)">
             SV{" "}
             <span className="text-(--muted-text) font-normal text-sm">
               admin

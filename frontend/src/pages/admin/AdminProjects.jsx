@@ -56,17 +56,17 @@ const AdminProjects = () => {
       {/* Header */}
       <div className="mb-10 flex items-center justify-between">
         <div>
-          <p className="mb-2 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
             Manage
           </p>
-          <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
+          <h1 className="text-3xl font-bold text-(--hero-text)">
             Brand Projects
           </h1>
         </div>
 
         <Link
           to="/admin/projects/new"
-          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium font-cta text-white transition-all duration-300"
         >
           <HiOutlinePlus size={16} />
           New Project
@@ -104,7 +104,7 @@ const AdminProjects = () => {
 
               {/* Info */}
               <div className="flex-1 min-w-0">
-                <h3 className="font-outfit font-semibold text-(--hero-text) truncate">
+                <h3 className="font-semibold text-(--hero-text) truncate">
                   {project.title}
                 </h3>
                 <div className="mt-0.5 flex items-center gap-3">

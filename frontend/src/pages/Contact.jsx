@@ -49,11 +49,11 @@ const Contact = () => {
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24">
       <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-[0.8fr_1fr] h-screen">
         <div>
-          <p className="mb-4 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-4 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
             Contact
           </p>
 
-          <h1 className="font-outfit text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
             Let's build
             <br />
             something great.
@@ -69,7 +69,7 @@ const Contact = () => {
         {submitted ? (
           <div className="flex items-center">
             <div>
-              <h2 className="font-outfit text-3xl font-bold text-(--hero-text)">
+              <h2 className="text-3xl font-bold text-(--hero-text)">
                 Message received.
               </h2>
               <p className="mt-4 text-lg text-(--muted-text)">

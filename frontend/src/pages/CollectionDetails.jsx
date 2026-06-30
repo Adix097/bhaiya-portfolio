@@ -123,7 +123,7 @@ const CollectionDetail = () => {
 
         {/* Metadata */}
         <aside>
-          <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
+          <h1 className="text-3xl font-bold text-(--hero-text)">
             {collection.title}
           </h1>
 

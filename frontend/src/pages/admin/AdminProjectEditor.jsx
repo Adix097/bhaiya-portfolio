@@ -206,10 +206,10 @@ const AdminProjectEditor = () => {
   return (
     <AdminLayout>
       <div className="mb-10">
-        <p className="mb-2 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+        <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
           {isEditing ? "Edit" : "New"}
         </p>
-        <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
+        <h1 className="text-3xl font-bold text-(--hero-text)">
           {isEditing ? "Edit Project" : "New Brand Project"}
         </h1>
       </div>
@@ -381,7 +381,7 @@ const AdminProjectEditor = () => {
         <button
           type="submit"
           disabled={saving}
-          className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving ? "Saving..." : isEditing ? "Save Changes" : "Create Project"}
           {!saving && (

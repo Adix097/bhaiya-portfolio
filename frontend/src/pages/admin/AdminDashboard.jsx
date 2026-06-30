@@ -15,7 +15,7 @@ const StatCard = ({ label, count, icon: Icon, to }) => (
   >
     <div>
       <p className="text-sm text-(--muted-text)">{label}</p>
-      <p className="mt-2 text-4xl font-bold font-outfit text-(--hero-text)">
+      <p className="mt-2 text-4xl font-bold  text-(--hero-text)">
         {count ?? "—"}
       </p>
     </div>
@@ -52,12 +52,10 @@ const AdminDashboard = () => {
     <AdminLayout>
       {/* Header */}
       <div className="mb-10">
-        <p className="mb-2 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+        <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
           Overview
         </p>
-        <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
-          Dashboard
-        </h1>
+        <h1 className="text-3xl font-bold text-(--hero-text)">Dashboard</h1>
       </div>
 
       {/* Stats */}
@@ -77,7 +75,7 @@ const AdminDashboard = () => {
       </div>
 
       <div>
-        <p className="mb-4 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--muted-text)">
+        <p className="mb-4 text-sm font-medium  uppercase tracking-[0.3em] text-(--muted-text)">
           Quick Actions
         </p>
 

@@ -56,17 +56,15 @@ const AdminCollections = () => {
       {/* Header */}
       <div className="mb-10 flex items-center justify-between">
         <div>
-          <p className="mb-2 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+          <p className="mb-2 text-sm font-medium  uppercase tracking-[0.3em] text-(--primary-cta)">
             Manage
           </p>
-          <h1 className="font-outfit text-3xl font-bold text-(--hero-text)">
-            Collections
-          </h1>
+          <h1 className="text-3xl font-bold text-(--hero-text)">Collections</h1>
         </div>
 
         <Link
           to="/admin/collections/new"
-          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium font-cta text-white transition-all duration-300"
         >
           <HiOutlinePlus size={16} />
           New Collection
@@ -104,7 +102,7 @@ const AdminCollections = () => {
 
               {/* Info */}
               <div className="flex-1 min-w-0">
-                <h3 className="font-outfit font-semibold text-(--hero-text) truncate">
+                <h3 className="font-semibold text-(--hero-text) truncate">
                   {collection.title}
                 </h3>
                 <p className="mt-0.5 text-sm text-(--muted-text)">

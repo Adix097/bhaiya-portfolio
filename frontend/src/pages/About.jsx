@@ -19,11 +19,11 @@ const About = () => {
 
           {/* Bio */}
           <div>
-            <p className="mb-4 text-sm font-medium font-outfit uppercase tracking-[0.3em] text-(--primary-cta)">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
               About Me
             </p>
 
-            <h1 className="font-outfit text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-(--hero-text)">
               Designer first,
               <br />
               storyteller always.
@@ -53,7 +53,7 @@ const About = () => {
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300"
+                className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300"
               >
                 Let's Talk
                 <ArrowRight
