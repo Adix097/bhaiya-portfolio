@@ -129,7 +129,7 @@ textarea {
 }
 
 .text-card-heading {
-  font-size: clamp(20px, 2.5vw, 24px);
+  font-size: clamp(18px, 2vw, 22px);
   line-height: 1.25;
 }
 
