@@ -59,12 +59,14 @@ const AdminCollections = () => {
           <p className="mb-2 text-label font-medium uppercase tracking-[0.3em] text-(--primary-cta)">
             Manage
           </p>
-          <h1 className="text-section-heading font-semibold text-(--hero-text)">Collections</h1>
+          <h1 className="text-section-heading font-semibold text-(--hero-text)">
+            Collections
+          </h1>
         </div>
 
         <Link
           to="/admin/collections/new"
-          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium font-cta text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium text-white transition-all duration-300"
         >
           <HiOutlinePlus size={16} />
           New Collection

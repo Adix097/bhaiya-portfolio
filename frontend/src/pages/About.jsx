@@ -23,7 +23,7 @@ const About = () => {
               About Me
             </p>
 
-            <h1 className="text-hero font-bold leading-tight text-(--hero-text)">
+            <h1 className="text-hero font-semibold leading-tight text-(--hero-text)">
               Designer first,
               <br />
               storyteller always.
@@ -53,7 +53,7 @@ const About = () => {
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300"
+                className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300"
               >
                 Let's Talk
                 <ArrowRight

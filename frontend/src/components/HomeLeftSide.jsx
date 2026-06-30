@@ -5,7 +5,7 @@ const HomeLeftSide = () => {
   return (
     <div className="relative z-20 flex min-h-screen items-center px-6 md:px-12 lg:px-18">
       <div className="max-w-4xl animate-[fadeUp_0.8s_ease-out]">
-        <h1 className="text-hero font-bold text-(--hero-text)">
+        <h1 className="text-hero font-semibold text-(--hero-text)">
           I'm Saurav Vishwakarma, <br />
           <span className="text-(--primary-cta)">
             Graphic Designer <br />& Illustrator
@@ -20,7 +20,7 @@ const HomeLeftSide = () => {
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
             to="/work"
-            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300"
+            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300"
           >
             View Work
             <ArrowRight
@@ -31,7 +31,7 @@ const HomeLeftSide = () => {
 
           <Link
             to="/contact"
-            className="inline-flex items-center text-(--hero-text) rounded-lg border border-(--border) px-7 py-3 text-sm font-cta transition-all duration-300 hover:border-(--hero-text)"
+            className="inline-flex items-center text-(--hero-text) rounded-lg border border-(--border) px-7 py-3 text-sm transition-all duration-300 hover:border-(--hero-text)"
           >
             Get in Touch
           </Link>

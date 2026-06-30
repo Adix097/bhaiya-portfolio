@@ -88,7 +88,7 @@ const AdminLogin = () => {
           <button
             type="submit"
             disabled={loading}
-            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium font-cta text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-7 py-3 font-medium text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Signing in..." : "Sign In"}
             {!loading && (

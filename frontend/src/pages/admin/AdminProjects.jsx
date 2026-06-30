@@ -66,7 +66,7 @@ const AdminProjects = () => {
 
         <Link
           to="/admin/projects/new"
-          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium font-cta text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 rounded-xl bg-(--primary-cta) px-5 py-2.5 text-sm font-medium text-white transition-all duration-300"
         >
           <HiOutlinePlus size={16} />
           New Project

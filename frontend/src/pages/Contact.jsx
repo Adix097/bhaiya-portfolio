@@ -53,7 +53,7 @@ const Contact = () => {
             Contact
           </p>
 
-          <h1 className="text-hero font-bold leading-tight text-(--hero-text)">
+          <h1 className="text-hero font-semibold leading-tight text-(--hero-text)">
             Let's build
             <br />
             something great.
