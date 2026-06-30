@@ -61,7 +61,7 @@ const CollectionDetail = () => {
         <HiChevronLeft size={16} /> Back to Work
       </Link>
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_500px]">
+      <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
         {/* Image viewer */}
         <div>
           <div
