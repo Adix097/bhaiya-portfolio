@@ -53,7 +53,10 @@ export default function Home() {
         <div className="w-full border border-(--border) rounded-4xl p-5 md:p-6 bg-(--surface-raised)">
           {/* Featured brand project */}
           {featuredProject ? (
-            <Link to={`/work/${featuredProject.slug}`} className="group block">
+            <Link
+              to={`/work/brand/${featuredProject.slug}`}
+              className="group block"
+            >
               <div className="relative overflow-hidden rounded-3xl border border-(--border)">
                 <div className="aspect-21/6 bg-(--surface-hover)">
                   <img
@@ -85,7 +88,7 @@ export default function Home() {
               ? selectedWork.map((collection) => (
                   <Link
                     key={collection.slug}
-                    to={`/collections/${collection.slug}`}
+                    to={`/work/collections/${collection.slug}`}
                     className="group"
                   >
                     <div className="overflow-hidden rounded-3xl border border-(--border) bg-(--surface-hover)">
