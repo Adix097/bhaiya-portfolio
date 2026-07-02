@@ -1,8 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Work from "./pages/Work";
+import Collections from "./pages/Collections";
+import BrandIdentity from "./pages/BrandIdentity";
 import CollectionDetail from "./pages/CollectionDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -52,8 +54,11 @@ function App() {
             </>
           }
         />
+
+        <Route path="/work" element={<Navigate to="/work/brand" replace />} />
+
         <Route
-          path="/work"
+          path="/work/brand"
           element={
             <>
               <Navbar />
@@ -62,22 +67,35 @@ function App() {
             </>
           }
         />
+
         <Route
-          path="/collections/:id"
+          path="/work/collections"
           element={
             <>
               <Navbar />
-              <CollectionDetail />
+              <Work />
               <Footer />
             </>
           }
         />
+
         <Route
-          path="/work/:slug"
+          path="/work/brand/:slug"
           element={
             <>
               <Navbar />
               <BrandProjectDetail />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/work/collections/:slug"
+          element={
+            <>
+              <Navbar />
+              <CollectionDetail />
               <Footer />
             </>
           }

@@ -36,8 +36,8 @@ const BrandProjectDetail = () => {
       <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen flex flex-col items-center justify-center gap-6">
         <p className="text-lg text-(--muted-text)">Project not found.</p>
         <Link
-          to="/work"
-          className="inline-flex items-center gap-2 text-secondary text-(--primary-cta) hover:text-(--hero-text) transition-colors"
+          to="/work/brand"
+          className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
         >
           <HiChevronLeft size={16} /> Back to Work
         </Link>
@@ -48,7 +48,7 @@ const BrandProjectDetail = () => {
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
       <Link
-        to="/work"
+        to="/work/brand"
         className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
       >
         <HiChevronLeft size={16} /> Back to Work
@@ -92,7 +92,9 @@ const BrandProjectDetail = () => {
                   <p className="text-label font-medium uppercase text-(--primary-cta) mb-1">
                     {label}
                   </p>
-                  <p className="text-body font-normal text-(--hero-text)">{value}</p>
+                  <p className="text-body font-normal text-(--hero-text)">
+                    {value}
+                  </p>
                 </div>
               ))}
             </div>

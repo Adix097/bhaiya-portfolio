@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import BrandIdentity from "./BrandIdentity";
 import Collections from "./Collections";
 
@@ -8,16 +8,20 @@ const TABS = [
 ];
 
 const Work = () => {
-  const [activeTab, setActiveTab] = useState("brand");
+  const location = useLocation();
+
+  const activeTab = location.pathname.includes("/work/collections")
+    ? "collections"
+    : "brand";
 
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24">
       <nav className="mb-12 flex justify-center">
         <div className="flex items-center gap-12">
           {TABS.map(({ key, label }) => (
-            <button
+            <Link
               key={key}
-              onClick={() => setActiveTab(key)}
+              to={key === "brand" ? "/work/brand" : "/work/collections"}
               className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${
                 activeTab === key
                   ? "border-b-2 border-(--hero-text) font-semibold text-(--hero-text)"
@@ -25,7 +29,7 @@ const Work = () => {
               }`}
             >
               {label}
-            </button>
+            </Link>
           ))}
         </div>
       </nav>

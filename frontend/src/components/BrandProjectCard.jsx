@@ -3,7 +3,7 @@ import ArrowRight from "./ArrowRight";
 
 const BrandProjectCard = ({ title, category, image, slug }) => {
   return (
-    <Link to={`/work/${slug}`} className="group block">
+    <Link to={`/work/brand/${slug}`} className="group block">
       <div className="overflow-hidden rounded-xl border border-(--border)">
         <img
           src={image}
@@ -14,7 +14,9 @@ const BrandProjectCard = ({ title, category, image, slug }) => {
 
       <div className="mt-5 flex items-center justify-between">
         <div>
-          <h3 className="text-card-heading font-semibold text-(--hero-text)">{title}</h3>
+          <h3 className="text-card-heading font-semibold text-(--hero-text)">
+            {title}
+          </h3>
           <p className="mt-1 text-secondary text-(--muted-text)">{category}</p>
         </div>
 

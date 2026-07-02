@@ -44,7 +44,7 @@ const Collections = () => {
         return (
           <Link
             key={collection.slug}
-            to={`/collections/${collection.slug}`}
+            to={`/work/collections/${collection.slug}`}
             className="group relative mb-3 block break-inside-avoid overflow-hidden"
           >
             <img
