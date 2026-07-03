@@ -56,3 +56,6 @@ temp/
 
 # Nested git repos
 frontend/src/assets/fonts/gotham-fonts/.git
+
+# unlighthouse
+.unlighthouse

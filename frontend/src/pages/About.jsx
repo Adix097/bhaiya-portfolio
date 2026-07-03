@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ArrowRight from "../components/ArrowRight";
-import photo from "../assets/about-photo.jpeg";
+import photo from "../assets/about_bhaiya.png";
 import { HiOutlineArrowDownTray } from "react-icons/hi2";
 
 const About = () => {
