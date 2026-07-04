@@ -22,16 +22,6 @@ export default function Home() {
       <section ref={heroRef} className="relative min-h-screen overflow-hidden">
         <HomeRightSide />
         <HomeLeftSide />
-
-        <div className="absolute bottom-10 left-6 md:left-12 lg:left-18 z-20">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-px bg-(--border) animate-[scrollPulse_1.8s_ease-in-out_infinite]" />
-            <span className="text-label uppercase tracking-[0.25em] text-(--muted-text)">
-              Scroll
-            </span>
-          </div>
-        </div>
-
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-t from-(--background) to-transparent z-10 pointer-events-none" />
       </section>
 
