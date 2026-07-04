@@ -19,7 +19,7 @@ const socials = [
   {
     white: instagramWhite,
     color: instagramColor,
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/sauravvishwakarma01",
   },
   {
     white: behanceWhite,
