@@ -5,9 +5,9 @@ const HomeLeftSide = () => {
   return (
     <div className="relative z-20 flex min-h-screen items-center px-6 md:px-12 lg:px-18">
       <div className="max-w-4xl animate-[fadeUp_0.8s_ease-out]">
-        <h1 className="text-hero font-semibold text-(--hero-text)">
-          I'm Saurav Vishwakarma, <br />
-          <span className="text-(--primary-cta)">
+        <h1 className="text-hero font-semibold sm:leading-none text-(--hero-text)">
+          <span className="leading-tight sm:leading-none">I'm Saurav Vishwakarma,</span> <br />
+          <span className="text-(--primary-cta) leading-tight sm:leading-none">
             Graphic Designer <br />& Illustrator
           </span>
         </h1>
