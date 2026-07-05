@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ArrowRight from "../components/ArrowRight";
-import photo from "../assets/about_bhaiya.png";
+import aboutImg from "../assets/about-img.png";
 import { HiOutlineArrowDownTray } from "react-icons/hi2";
 
 const About = () => {
@@ -11,7 +11,7 @@ const About = () => {
           {/* Image */}
           <div className="overflow-hidden border border-(--border)">
             <img
-              src={photo}
+              src={aboutImg}
               alt="Saurav Vishwakarma"
               className="h-full w-full object-cover"
             />

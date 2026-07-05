@@ -1,4 +1,4 @@
-import pfp from "../assets/bhaiya.png";
+import heroImg from "../assets/hero-img.png";
 
 const HomeRightSide = () => {
   return (
@@ -9,7 +9,7 @@ const HomeRightSide = () => {
       {/* Image */}
       <div className="absolute inset-y-0 right-0 w-full md:w-[55%]">
         <img
-          src={pfp}
+          src={heroImg}
           alt="Saurav Vishwakarma"
          className="h-full w-full object-cover object-center animate-[heroZoom_8s_ease-out_forwards]"
         />
