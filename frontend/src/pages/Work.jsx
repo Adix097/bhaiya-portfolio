@@ -3,7 +3,7 @@ import BrandIdentity from "./BrandIdentity";
 import Collections from "./Collections";
 
 const TABS = [
-  { key: "brand", label: "Brand Identity" },
+  { key: "brand", label: "Branding/Campaigns" },
   { key: "collections", label: "Collections" },
 ];
 
