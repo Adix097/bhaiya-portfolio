@@ -1,5 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import HomeTop from "../components/HomeTop";
+import HomeBottom from "../components/HomeBottom";
 import HomeRightSide from "../components/HomeRightSide";
 import HomeLeftSide from "../components/HomeLeftSide";
 import ArrowRight from "../components/ArrowRight";
@@ -19,11 +21,29 @@ export default function Home() {
   return (
     <div className="antialiased">
       {/* Hero */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-        <HomeRightSide />
-        <HomeLeftSide />
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-t from-(--background) to-transparent z-10 pointer-events-none" />
-      </section>
+
+      <div className="block sm:hidden">
+        <section
+          ref={heroRef}
+          className="relative min-h-screen overflow-hidden pb-8"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.04),transparent_42%)]" />
+          <HomeTop />
+          <HomeBottom />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-t from-(--background) to-transparent z-10 pointer-events-none" />
+        </section>
+      </div>
+
+      <div className="hidden sm:block">
+        <section
+          ref={heroRef}
+          className="relative min-h-screen overflow-hidden"
+        >
+          <HomeRightSide />
+          <HomeLeftSide />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-t from-(--background) to-transparent z-10 pointer-events-none" />
+        </section>
+      </div>
 
       {/* Selected Work */}
       <section ref={workRef} className="px-6 md:px-12 lg:px-18 pt-24 pb-24">
@@ -52,7 +72,7 @@ export default function Home() {
                   <img
                     src={featuredProject.coverImage.url}
                     alt={featuredProject.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-fill transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 
