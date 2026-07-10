@@ -13,6 +13,7 @@ const metadataSchema = new mongoose.Schema({
 const collectionSchema = new mongoose.Schema(
   {
     slug: { type: String, required: true, unique: true, trim: true },
+    year: { type: Number, default: 0 },
     title: { type: String, required: true, trim: true },
     description: { type: String, default: "" },
     coverImage: {

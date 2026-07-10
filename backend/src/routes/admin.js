@@ -10,9 +10,16 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
+const extractYear = (metadata) => {
+  const dateMeta = metadata?.find((m) => m.label.toLowerCase() === "date");
+  if (!dateMeta) return 0;
+  const match = dateMeta.value.match(/\d{4}/);
+  return match ? parseInt(match[0]) : 0;
+};
+
 // Cloudinary
-const uploadToCloudinary = (buffer, folder) =>
-  new Promise((resolve, reject) => {
+const uploadToCloudinary = (buffer, folder) => {
+  return new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream({ folder }, (error, result) => {
         if (error) reject(error);
@@ -20,6 +27,7 @@ const uploadToCloudinary = (buffer, folder) =>
       })
       .end(buffer);
   });
+};
 
 const deleteFromCloudinary = (publicId) => {
   if (!publicId) return Promise.resolve();
@@ -64,6 +72,7 @@ router.post("/upload", auth, upload.single("image"), async (req, res) => {
 // Collections
 router.post("/collections", auth, async (req, res) => {
   try {
+    const year = extractYear(req.body.metadata);
     const collection = await Collection.create(req.body);
     res.status(201).json(collection);
   } catch (err) {
@@ -73,9 +82,10 @@ router.post("/collections", auth, async (req, res) => {
 
 router.put("/collections/:slug", auth, async (req, res) => {
   try {
+    const year = extractYear(req.body.metadata);
     const collection = await Collection.findOneAndUpdate(
       { slug: req.params.slug },
-      req.body,
+      { ...req.body, year },
       { new: true, runValidators: true },
     );
     if (!collection) {

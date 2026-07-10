@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     const collections = await Collection.find()
       .select("slug title coverImage metadata featured")
-      .sort({ createdAt: -1 });
+      .sort({ year: -1, createdAt: -1 });
     res.json(collections);
   } catch {
     res.status(500).json({ message: "Failed to fetch collections" });
