@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Logo from "../assets/logos/logo.svg";
 
 const LINKS = [
   { label: "Home", to: "/" },
@@ -22,11 +23,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between px-6 md:px-12 lg:px-18 bg-(--background) border-b border-(--border)">
-      <Link
-        to="/"
-        className="text-lg font-semibold tracking-tight text-(--hero-text)"
-      >
-        SV
+      <Link to="/" className="flex items-center">
+        <img src={Logo} alt="Saurav Vishwakarma" className="h-8 w-auto" />
       </Link>
 
       {/* Desktop Menu */}
