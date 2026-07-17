@@ -155,3 +155,15 @@ textarea {
   font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.2;
 }
+
+/* Chrome, Edge, Safari, Opera */
+::selection {
+  background-color: #f9c80e;
+  color: #000;
+}
+
+/* Firefox */
+::-moz-selection {
+  background-color: #f9c80e;
+  color: #000;
+}
