@@ -35,15 +35,18 @@ const BrandIdentity = () => {
 
   return (
     <div className="mx-auto max-w-5xl space-y-10">
-      {projects.map((project) => (
-        <BrandProjectCard
-          key={project.slug}
-          title={project.title}
-          category={`${project.category} · ${project.year}`}
-          image={project.coverImage.url}
-          slug={project.slug}
-        />
-      ))}
+      {projects.map((project) => {
+        console.log(project);
+        return (
+          <BrandProjectCard
+            key={project.slug}
+            title={project.title}
+            category={`${project.category} · ${project.year}`}
+            image={project.coverImage.url}
+            slug={project.slug}
+          />
+        );
+      })}
     </div>
   );
 };

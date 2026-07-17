@@ -12,6 +12,7 @@ const brandProjectSchema = new mongoose.Schema(
     category: { type: String, required: true, trim: true },
     year: { type: String, required: true },
     description: { type: String, default: "" },
+    featured: { type: Boolean, default: false },
     metadata: [metadataSchema],
     coverImage: {
       url: { type: String, required: true },

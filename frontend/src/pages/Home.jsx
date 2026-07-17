@@ -72,7 +72,7 @@ export default function Home() {
                   <img
                     src={featuredProject.coverImage.url}
                     alt={featuredProject.title}
-                    className="h-full w-full object-fill transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 

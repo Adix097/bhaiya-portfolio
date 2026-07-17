@@ -24,22 +24,22 @@ const socials = [
   {
     white: behanceWhite,
     color: behanceColor,
-    href: "https://behance.net",
+    href: "https://www.behance.net/sauravvishwak",
   },
   {
     white: linkedinWhite,
     color: linkedinColor,
-    href: "https://linkedin.com",
+    href: "http://www.linkedin.com/in/saurav-vishwakarma",
   },
   {
     white: facebookWhite,
     color: facebookColor,
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/share/1J9u72voRH/",
   },
   {
     white: xWhite,
     color: xColor,
-    href: "https://x.com",
+    href: "https://x.com/sauravstudio98",
   },
 ];
 

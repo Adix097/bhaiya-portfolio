@@ -63,7 +63,7 @@ const BrandProjectDetail = () => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 md:p-12">
-          <h1 className="text-hero font-bold text-(--hero-text)">
+          <h1 className="text-5xl font-semibold text-(--hero-text)">
             {project.title}
           </h1>
         </div>
@@ -71,7 +71,7 @@ const BrandProjectDetail = () => {
 
       {/* Project Info*/}
       {(project.description || project.metadata?.length > 0) && (
-        <div className="grid gap-12 lg:grid-cols-[1fr_320px] mb-16 pb-16 border-b border-(--border)">
+        <div className="grid gap-60 lg:grid-cols-[1fr_320px] mb-16 pb-16">
           {/* Description */}
           {project.description && (
             <div>

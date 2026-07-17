@@ -240,7 +240,7 @@ const AdminProjectEditor = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-label text-(--muted-text)">Category</label>
+            <label className="text-label text-(--muted-text)">Segment</label>
             <input
               type="text"
               value={category}
