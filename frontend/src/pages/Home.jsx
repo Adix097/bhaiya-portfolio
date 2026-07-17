@@ -15,7 +15,8 @@ export default function Home() {
   const { data: collections } = useFetch(getCollections);
   const { data: projects } = useFetch(getProjects);
 
-  const featuredProject = projects?.find((p) => p.featured) ?? null;
+  const featuredProjects =
+    projects?.filter((p) => p.featured).slice(0, 2) ?? [];
   const selectedWork = collections?.filter((c) => c.featured).slice(0, 3) ?? [];
 
   return (
@@ -61,35 +62,50 @@ export default function Home() {
         </div>
 
         <div className="w-full border border-(--border) rounded-4xl p-5 md:p-6 bg-(--surface-raised)">
-          {/* Featured brand project */}
-          {featuredProject ? (
-            <Link
-              to={`/work/brand/${featuredProject.slug}`}
-              className="group block"
-            >
-              <div className="relative overflow-hidden rounded-3xl border border-(--border)">
-                <div className="aspect-21/6 bg-(--surface-hover)">
-                  <img
-                    src={featuredProject.coverImage.url}
-                    alt={featuredProject.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+          {/* Featured brand projects */}
+          {featuredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+              {featuredProjects.map((project) => (
+                <Link
+                  key={project.slug}
+                  to={`/work/brand/${project.slug}`}
+                  className="group"
+                >
+                  <div className="overflow-hidden rounded-3xl border border-(--border) bg-(--surface-hover)">
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.coverImage.url}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
 
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
-
-                <div className="absolute bottom-0 left-0 p-8">
-                  <p className="text-label font-medium tracking-[0.25em] uppercase text-(--primary-cta)">
-                    {featuredProject.category}
-                  </p>
-                  <h3 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
-                    {featuredProject.title}
-                  </h3>
-                </div>
-              </div>
-            </Link>
+                    <div className="border-t border-(--border) p-5">
+                      <p className="text-label font-medium tracking-[0.2em] uppercase text-(--primary-cta)">
+                        Brand Identity
+                      </p>
+                      <h4 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
+                        {project.title}
+                      </h4>
+                      {project.category && (
+                        <p className="mt-1 text-secondary text-(--muted-text)">
+                          {project.category}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           ) : (
-            <div className="aspect-21/6 rounded-3xl bg-(--surface-hover) animate-pulse" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-3xl bg-(--surface-hover) animate-pulse"
+                />
+              ))}
+            </div>
           )}
 
           {/* Collections grid */}
