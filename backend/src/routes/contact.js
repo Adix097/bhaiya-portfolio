@@ -29,7 +29,7 @@ router.post("/", contactLimiter, async (req, res) => {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Portfolio Contact <onboarding@resend.dev>",
+        from: "Portfolio Contact <contact@sauravvishwakarma.com>",
         to: process.env.ADMIN_EMAIL,
         reply_to: email,
         subject: `[Portfolio] ${escapeHtml(subject)}`,
