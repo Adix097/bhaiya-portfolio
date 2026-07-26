@@ -63,7 +63,7 @@ const About = () => {
               </Link>
 
               <a
-                href="/resume.pdf"
+                href="/Saurav-Vishwakarma-CV.pdf"
                 download
                 className="inline-flex items-center gap-2 text-secondary font-medium text-(--muted-text) transition-colors duration-300 hover:text-(--hero-text)"
               >
