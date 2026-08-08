@@ -127,9 +127,15 @@ export default function Home() {
                         <h4 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
                           {collection.title}
                         </h4>
-                        {collection.metadata?.[0] && (
+                        {collection.metadata?.find(
+                          (m) => m.label === "Category",
+                        )?.value && (
                           <p className="mt-1 text-secondary text-(--muted-text)">
-                            {collection.metadata[0].value}
+                            {
+                              collection.metadata.find(
+                                (m) => m.label === "Category",
+                              ).value
+                            }
                           </p>
                         )}
                       </div>
