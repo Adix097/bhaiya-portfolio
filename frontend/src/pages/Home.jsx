@@ -81,9 +81,6 @@ export default function Home() {
                     </div>
 
                     <div className="border-t border-(--border) p-5">
-                      <p className="text-label font-medium tracking-[0.2em] uppercase text-(--primary-cta)">
-                        Brand Identity
-                      </p>
                       <h4 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
                         {project.title}
                       </h4>
@@ -127,9 +124,6 @@ export default function Home() {
                       </div>
 
                       <div className="border-t border-(--border) p-5">
-                        <p className="text-label font-medium tracking-[0.2em] uppercase text-(--primary-cta)">
-                          Collection
-                        </p>
                         <h4 className="mt-2 text-card-heading font-semibold text-(--hero-text)">
                           {collection.title}
                         </h4>
