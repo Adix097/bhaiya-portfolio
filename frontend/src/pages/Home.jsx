@@ -133,7 +133,7 @@ export default function Home() {
                           <p className="mt-1 text-secondary text-(--muted-text)">
                             {
                               collection.metadata.find(
-                                (m) => m.label === "Category",
+                                (m) => m.label === "Segment",
                               ).value
                             }
                           </p>
