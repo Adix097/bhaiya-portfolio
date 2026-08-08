@@ -128,7 +128,7 @@ export default function Home() {
                           {collection.title}
                         </h4>
                         {collection.metadata?.find(
-                          (m) => m.label === "Category",
+                          (m) => m.label === "Segment",
                         )?.value && (
                           <p className="mt-1 text-secondary text-(--muted-text)">
                             {
