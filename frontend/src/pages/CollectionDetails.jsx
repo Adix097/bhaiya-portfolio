@@ -141,7 +141,7 @@ const CollectionDetail = () => {
 
           {collection.description && (
             <div className="mt-8 border-t border-(--border) pt-6">
-              <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) whitespace-pre-wrap">
+              <p className="mt-4 text-base text-left leading-relaxed text-(--muted-text) whitespace-pre-wrap">
                 {collection.description}
               </p>
             </div>
