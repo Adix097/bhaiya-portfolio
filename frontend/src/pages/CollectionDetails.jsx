@@ -91,8 +91,8 @@ const CollectionDetail = () => {
                     key={image._id}
                     onClick={() => setActiveImage(index)}
                     className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${activeImage === index
-                        ? "border-(--primary-cta)"
-                        : "border-transparent opacity-50 hover:opacity-100"
+                      ? "border-(--primary-cta)"
+                      : "border-transparent opacity-50 hover:opacity-100"
                       }`}
                   >
                     <img
@@ -138,9 +138,11 @@ const CollectionDetail = () => {
           )}
 
           {collection.description && (
-            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) font-normal">
-              {collection.description}
-            </p>
+            <div className="mt-8 border-t border-(--border) pt-6">
+              <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) whitespace-pre-wrap">
+                {collection.description}
+              </p>
+            </div>
           )}
 
           <Link
