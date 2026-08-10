@@ -90,11 +90,10 @@ const CollectionDetail = () => {
                   <button
                     key={image._id}
                     onClick={() => setActiveImage(index)}
-                    className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                      activeImage === index
+                    className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${activeImage === index
                         ? "border-(--primary-cta)"
                         : "border-transparent opacity-50 hover:opacity-100"
-                    }`}
+                      }`}
                   >
                     <img
                       src={image.url}
@@ -127,12 +126,6 @@ const CollectionDetail = () => {
             {collection.title}
           </h1>
 
-          {collection.description && (
-            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) font-normal">
-              {collection.description}
-            </p>
-          )}
-
           {collection.metadata?.length > 0 && (
             <div className="mt-8 border-t border-(--border) pt-6 space-y-4">
               {collection.metadata.map(({ label, value }) => (
@@ -142,6 +135,12 @@ const CollectionDetail = () => {
                 </div>
               ))}
             </div>
+          )}
+
+          {collection.description && (
+            <p className="mt-4 text-base text-justify leading-relaxed text-(--muted-text) font-normal">
+              {collection.description}
+            </p>
           )}
 
           <Link
