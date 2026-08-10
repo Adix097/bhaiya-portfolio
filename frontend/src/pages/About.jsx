@@ -23,30 +23,18 @@ const About = () => {
               About Me
             </p>
 
-            <h1 className="text-body font-semibold leading-tight text-(--hero-text)">
-              Designer first,
-              <br />
-              storyteller always.
-            </h1>
-
             <div className="mt-8 max-w-2xl space-y-6 text-body font-normal text-(--muted-text)">
               <p>
-                I'm Saurav Vishwakarma, a graphic designer focused on brand
-                identity, visual systems, and illustration. I enjoy creating
-                work that feels clear, memorable, and built with purpose.
+                I'm Saurav Vishwakarma, a <strong>Graphic Designer</strong> and <strong>Illustrator</strong>, originally from Dhanbad, Jharkhand, currently living in New Delhi. I did my BFA in Applied Art from Jamia Millia Islamia.
               </p>
-
               <p>
-                My process combines strategy and aesthetics. Whether I'm
-                designing a logo, developing a visual identity, or creating
-                illustrations, I aim to make every element communicate something
-                meaningful.
+                I use software like <strong><em>Adobe Photoshop, Adobe Illustrator, Adobe InDesign, and Adobe Fresco</em></strong> the most, <strong><em>Lightroom</em></strong> for photo editing, and have a basic knowledge of <strong><em>Figma</em></strong>.
               </p>
-
               <p>
-                When I'm not designing, I'm exploring typography, sketching new
-                ideas, and studying how great visual identities shape the way
-                people connect with brands.
+                I do brand identity design as well; however, Illustration and Graphic Design is what I keep coming back to. I constantly seek inspiration to enhance my creativity by reading books, articles, surfing the internet, and watching tutorials.
+              </p>
+              <p>
+                When I'm not working, you can usually find me wandering around a bookstore, immersing myself in books, movie scripts, and indulging in drawing and sketching, allowing myself to be transcended to another realm. I consider myself a lifelong learner, student, and nobody.
               </p>
             </div>
 
