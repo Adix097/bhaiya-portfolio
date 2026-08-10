@@ -23,7 +23,7 @@ const About = () => {
               About Me
             </p>
 
-            <h1 className="text-hero font-semibold leading-tight text-(--hero-text)">
+            <h1 className="text-body font-semibold leading-tight text-(--hero-text)">
               Designer first,
               <br />
               storyteller always.

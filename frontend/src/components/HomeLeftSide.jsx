@@ -12,10 +12,10 @@ const HomeLeftSide = () => {
           </span>
         </h1>
 
-        <p className="mt-8 max-w-xl text-[19px] leading-[1.7] font-normal text-(--muted-text)">
+        {/* <p className="mt-8 max-w-xl text-[19px] leading-[1.7] font-normal text-(--muted-text)">
           Building brand identities that hold their nerve and illustrations that
           say what words don't. Based in Delhi, available worldwide.
-        </p>
+        </p> */}
 
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
