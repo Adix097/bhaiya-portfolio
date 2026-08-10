@@ -34,7 +34,7 @@ const BrandIdentity = () => {
   }
 
   return (
-    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-2">
+    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
       {projects.map((project) => {
         console.log(project);
 
