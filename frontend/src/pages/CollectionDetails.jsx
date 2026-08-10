@@ -93,6 +93,8 @@ const CollectionDetail = () => {
                     className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${activeImage === index
                       ? "border-(--primary-cta)"
                       : "border-transparent opacity-50 hover:opacity-100"
+                      ? "border-(--primary-cta)"
+                      : "border-transparent opacity-50 hover:opacity-100"
                       }`}
                   >
                     <img
