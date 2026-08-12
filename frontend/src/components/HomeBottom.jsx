@@ -15,11 +15,6 @@ const HomeBottom = () => {
           </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-[19px] leading-[1.7] font-normal text-(--muted-text)">
-          Building brand identities that hold their nerve and illustrations that
-          say what words don't. Based in Delhi, available worldwide.
-        </p>
-
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             to="/work"
