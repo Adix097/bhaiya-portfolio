@@ -4,6 +4,49 @@ import AdminLayout from "../../components/AdminLayout";
 import ArrowRight from "../../components/ArrowRight";
 import { HiOutlineTrash, HiOutlinePlus, HiOutlinePhoto } from "react-icons/hi2";
 import { API_URL as API } from "../../lib/api";
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, } from "@dnd-kit/core";
+import { SortableContext, rectSortingStrategy, arrayMove, useSortable, } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+const SortableImage = ({ id, src, index, onRemove }) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="relative overflow-hidden rounded-xl border border-(--border) cursor-grab active:cursor-grabbing"
+    >
+      <img
+        src={src}
+        alt=""
+        className="h-28 w-full object-cover pointer-events-none"
+      />
+
+      <button
+        type="button"
+        onPointerDown={(e) => e.stopPropagation()}
+        onClick={() => onRemove(index)}
+        className="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-lg bg-black/60 text-white hover:bg-black/80 transition-colors"
+      >
+        <HiOutlineTrash size={12} />
+      </button>
+    </div>
+  );
+};
 
 const AdminCollectionEditor = () => {
   const { slug } = useParams();
@@ -27,6 +70,25 @@ const AdminCollectionEditor = () => {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [description, setDescription] = useState("");
   const [featured, setFeatured] = useState(false);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+  );
+
+  const handleDragEnd = ({ active, over }) => {
+    if (!over || active.id === over.id) return;
+
+    setImagePreviews((items) => {
+      const oldIndex = items.findIndex((item) => item.id === active.id);
+      const newIndex = items.findIndex((item) => item.id === over.id);
+
+      return arrayMove(items, oldIndex, newIndex);
+    });
+  };
 
   // Auto-generate slug from title
   const handleTitleChange = (e) => {
@@ -56,7 +118,14 @@ const AdminCollectionEditor = () => {
         );
         setCoverPreview(data.coverImage?.url ?? "");
         setExistingImages(data.images ?? []);
-        setImagePreviews(data.images?.map((img) => img.url) ?? []);
+        setImagePreviews(
+          data.images?.map((img) => ({
+            id: img.publicId || crypto.randomUUID(),
+            src: img.url,
+            type: "existing",
+            data: img,
+          })) ?? [],
+        );
         setDescription(data.description ?? "");
         setFeatured(data.featured ?? false);
       })
@@ -108,23 +177,39 @@ const AdminCollectionEditor = () => {
   // Gallery images
   const handleImagesChange = (e) => {
     const files = Array.from(e.target.files);
+
     setImages((prev) => [...prev, ...files]);
-    setImagePreviews((prev) => [
-      ...prev,
-      ...files.map((f) => URL.createObjectURL(f)),
-    ]);
+
+    const newImages = files.map((file) => ({
+      id: crypto.randomUUID(),
+      src: URL.createObjectURL(file),
+      type: "new",
+      file,
+    }));
+
+    setImagePreviews((prev) => [...prev, ...newImages]);
   };
 
   const removeImage = (index) => {
-    if (index < existingImages.length) {
-      setExistingImages((prev) => prev.filter((_, i) => i !== index));
-    } else {
-      const newIndex = index - existingImages.length;
+    setImagePreviews((prev) => {
+      const image = prev[index];
 
-      setImages((prev) => prev.filter((_, i) => i !== newIndex));
-    }
+      if (image.type === "new") {
+        setImages((files) =>
+          files.filter((file) => file !== image.file),
+        );
+      }
 
-    setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+      if (image.type === "existing") {
+        setExistingImages((prevExisting) =>
+          prevExisting.filter(
+            (existing) => existing !== image.data,
+          ),
+        );
+      }
+
+      return prev.filter((_, i) => i !== index);
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -150,11 +235,22 @@ const AdminCollectionEditor = () => {
       }
 
       // Upload gallery images
-      const uploadedImages = await Promise.all(
-        images.map((file) => uploadFile(file, "portfolio/collections")),
-      );
+      const allImages = [];
 
-      const allImages = [...existingImages, ...uploadedImages];
+      for (const image of imagePreviews) {
+        if (image.type === "existing") {
+          allImages.push(image.data);
+        }
+
+        if (image.type === "new") {
+          const uploaded = await uploadFile(
+            image.file,
+            "portfolio/collections",
+          );
+
+          allImages.push(uploaded);
+        }
+      }
 
       const payload = {
         title,
@@ -292,36 +388,45 @@ const AdminCollectionEditor = () => {
 
         {/* Gallery Images */}
         <div className="space-y-2">
-          <label className="text-sm text-(--muted-text)">Gallery Images</label>
-          <div className="grid grid-cols-3 gap-3">
-            {imagePreviews.map((src, index) => (
-              <div
-                key={index}
-                className="relative overflow-hidden rounded-xl border border-(--border)"
-              >
-                <img src={src} alt="" className="h-28 w-full object-cover" />
-                <button
-                  type="button"
-                  onClick={() => removeImage(index)}
-                  className="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-lg bg-black/60 text-white hover:bg-black/80 transition-colors"
-                >
-                  <HiOutlineTrash size={12} />
-                </button>
-              </div>
-            ))}
+          <label className="text-sm text-(--muted-text)">
+            Gallery Images
+          </label>
 
-            <label className="flex h-28 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-(--border) text-(--muted-text) hover:border-(--primary-cta) hover:text-(--hero-text) transition-colors">
-              <HiOutlinePlus size={20} />
-              <span className="text-xs">Add images</span>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleImagesChange}
-                className="hidden"
-              />
-            </label>
-          </div>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext
+              items={imagePreviews.map((image) => image.id)}
+              strategy={rectSortingStrategy}
+            >
+              <div className="grid grid-cols-3 gap-3">
+                {imagePreviews.map((image, index) => (
+                  <SortableImage
+                    key={image.id}
+                    id={image.id}
+                    src={image.src}
+                    index={index}
+                    onRemove={removeImage}
+                  />
+                ))}
+
+                <label className="flex h-28 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-(--border) text-(--muted-text) hover:border-(--primary-cta) hover:text-(--hero-text) transition-colors">
+                  <HiOutlinePlus size={20} />
+                  <span className="text-xs">Add images</span>
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImagesChange}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </SortableContext>
+          </DndContext>
         </div>
 
         {/* Metadata */}
