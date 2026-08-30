@@ -3,8 +3,8 @@ import BrandIdentity from "./BrandIdentity";
 import Collections from "./Collections";
 
 const TABS = [
-  { key: "brand", label: "Branding/Campaigns" },
   { key: "collections", label: "Collections" },
+  { key: "brand", label: "Branding/Campaigns" },
 ];
 
 const Work = () => {
@@ -22,11 +22,10 @@ const Work = () => {
             <Link
               key={key}
               to={key === "brand" ? "/work/brand" : "/work/collections"}
-              className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${
-                activeTab === key
+              className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${activeTab === key
                   ? "border-b-2 border-(--hero-text) font-semibold text-(--hero-text)"
                   : "font-normal text-(--muted-text) hover:text-(--hero-text)"
-              }`}
+                }`}
             >
               {label}
             </Link>

@@ -55,7 +55,7 @@ function App() {
           }
         />
 
-        <Route path="/work" element={<Navigate to="/work/brand" replace />} />
+        <Route path="/work" element={<Navigate to="/work/collections" replace />} />
 
         <Route
           path="/work/brand"
