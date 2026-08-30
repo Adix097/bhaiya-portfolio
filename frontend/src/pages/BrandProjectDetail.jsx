@@ -78,7 +78,7 @@ const BrandProjectDetail = () => {
               <p className="mb-3 text-label font-medium uppercase text-(--primary-cta)">
                 Description
               </p>
-              <p className="text-body font-normal text-(--muted-text)">
+              <p className="text-body font-normal text-(--muted-text) whitespace-pre-wrap">
                 {project.description}
               </p>
             </div>
