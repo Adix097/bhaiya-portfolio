@@ -48,7 +48,7 @@ const TypedCollections = ({ type }) => {
             className="w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/35 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
           <span className="absolute bottom-3 right-3 flex h-6 w-6 items-center justify-center text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             <svg
