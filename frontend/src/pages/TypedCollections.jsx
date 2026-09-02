@@ -59,7 +59,7 @@ const TypedCollections = ({ type }) => {
 
                         <div className="absolute inset-x-0 bottom-0 p-3 flex items-center justify-between text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                             {showCategory && (
-                                <span className="text-[11px] font-medium tracking-normal normal-case">
+                                <span className="text-[20px] font-medium tracking-normal normal-case">
                                     {category}
                                 </span>
                             )}
