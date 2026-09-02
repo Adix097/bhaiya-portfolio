@@ -5,7 +5,7 @@ import TypedCollections from "./TypedCollections";
 const TABS = [
   { key: "book-covers", label: "Book Covers", path: "/work/book-covers" },
   { key: "illustrations", label: "Illustrations", path: "/work/illustrations" },
-  { key: "sketch-book", label: "Sketch Book", path: "/work/sketch-book" },
+  { key: "sketch-book", label: "Sketchbook", path: "/work/sketch-book" },
   { key: "collections", label: "Collections", path: "/work/collections" },
   { key: "brand-campaigns", label: "Branding/Campaigns", path: "/work/brand" },
 ];
@@ -25,8 +25,8 @@ const Work = () => {
               key={key}
               to={path}
               className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${activeTab === key
-                  ? "border-b-2 border-(--hero-text) text-(--hero-text)"
-                  : "font-normal text-(--muted-text) hover:text-(--hero-text)"
+                ? "border-b-2 border-(--hero-text) text-(--hero-text)"
+                : "font-normal text-(--muted-text) hover:text-(--hero-text)"
                 }`}
             >
               {label}
