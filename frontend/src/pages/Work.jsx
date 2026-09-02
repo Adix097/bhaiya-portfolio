@@ -6,7 +6,7 @@ const TABS = [
   { key: "book-covers", label: "Book Covers", path: "/work/book-covers" },
   { key: "illustrations", label: "Illustrations", path: "/work/illustrations" },
   { key: "collections", label: "Collections", path: "/work/collections" },
-  { key: "brand-campaigns", label: "Brand Campaigns", path: "/work/brand" },
+  { key: "brand-campaigns", label: "Branding/Campaigns", path: "/work/brand" },
 ];
 
 const Work = () => {
@@ -23,11 +23,10 @@ const Work = () => {
             <Link
               key={key}
               to={path}
-              className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${
-                activeTab === key
+              className={`pb-2 text-button font-semibold cursor-pointer transition-colors duration-200 ${activeTab === key
                   ? "border-b-2 border-(--hero-text) text-(--hero-text)"
                   : "font-normal text-(--muted-text) hover:text-(--hero-text)"
-              }`}
+                }`}
             >
               {label}
             </Link>
