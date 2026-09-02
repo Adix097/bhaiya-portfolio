@@ -22,6 +22,11 @@ const collectionSchema = new mongoose.Schema(
     },
     images: [imageSchema],
     featured: { type: Boolean, default: false },
+    type: {
+      type: String,
+      enum: ["book-covers", "illustrations", "collections", "brand-campaigns"],
+      default: "book-covers",
+    },
     metadata: [metadataSchema],
   },
   { timestamps: true },

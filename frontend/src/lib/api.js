@@ -9,6 +9,7 @@ const get = async (path) => {
 export const API_URL = import.meta.env.VITE_API_URL;
 
 export const getCollections = () => get("/collections");
+export const getCollectionsByType = (type) => get(`/collections?type=${type}`);
 export const getCollection = (slug) => get(`/collections/${slug}`);
 export const getProjects = () => get("/projects");
 export const getProject = (slug) => get(`/projects/${slug}`);

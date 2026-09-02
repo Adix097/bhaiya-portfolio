@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const collections = await Collection.find()
-      .select("slug title coverImage metadata featured")
+    const filter = req.query.type ? { type: req.query.type } : {};
+    const collections = await Collection.find(filter)
+      .select("slug title coverImage metadata featured type")
       .sort({ year: -1, createdAt: -1 });
     res.json(collections);
   } catch {

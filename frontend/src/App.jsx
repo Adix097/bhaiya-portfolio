@@ -3,8 +3,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Work from "./pages/Work";
-import Collections from "./pages/Collections";
-import BrandIdentity from "./pages/BrandIdentity";
 import CollectionDetail from "./pages/CollectionDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -55,10 +53,21 @@ function App() {
           }
         />
 
-        <Route path="/work" element={<Navigate to="/work/collections" replace />} />
+        <Route path="/work" element={<Navigate to="/work/book-covers" replace />} />
 
         <Route
-          path="/work/brand"
+          path="/work/book-covers"
+          element={
+            <>
+              <Navbar />
+              <Work />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/work/illustrations"
           element={
             <>
               <Navbar />
@@ -80,22 +89,33 @@ function App() {
         />
 
         <Route
-          path="/work/brand/:slug"
+          path="/work/brand"
           element={
             <>
               <Navbar />
-              <BrandProjectDetail />
+              <Work />
               <Footer />
             </>
           }
         />
 
         <Route
-          path="/work/collections/:slug"
+          path="/work/:type/:slug"
           element={
             <>
               <Navbar />
               <CollectionDetail />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/work/brand/:slug"
+          element={
+            <>
+              <Navbar />
+              <BrandProjectDetail />
               <Footer />
             </>
           }

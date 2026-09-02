@@ -62,6 +62,7 @@ const AdminCollectionEditor = () => {
 
   const [title, setTitle] = useState("");
   const [collectionSlug, setCollectionSlug] = useState("");
+  const [type, setType] = useState("book-covers");
   const [metadata, setMetadata] = useState([{ label: "", value: "" }]);
   const [coverImage, setCoverImage] = useState(null);
   const [coverPreview, setCoverPreview] = useState("");
@@ -113,6 +114,7 @@ const AdminCollectionEditor = () => {
       .then((data) => {
         setTitle(data.title);
         setCollectionSlug(data.slug);
+        setType(data.type ?? "book-covers");
         setMetadata(
           data.metadata?.length ? data.metadata : [{ label: "", value: "" }],
         );
@@ -255,6 +257,7 @@ const AdminCollectionEditor = () => {
       const payload = {
         title,
         slug: collectionSlug,
+        type,
         coverImage: coverData,
         images: allImages,
         description: description,
@@ -338,6 +341,21 @@ const AdminCollectionEditor = () => {
             required
             className={inputClass}
           />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm text-(--muted-text)">Work Type</label>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            required
+            className={inputClass}
+          >
+            <option value="book-covers">Book Covers</option>
+            <option value="illustrations">Illustrations</option>
+            <option value="collections">Collections</option>
+            <option value="brand-campaigns">Brand Campaigns</option>
+          </select>
         </div>
 
         {/* Cover Image */}
