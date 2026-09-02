@@ -31,7 +31,7 @@ const About = () => {
                 I use software like <strong><em>Adobe Photoshop, Adobe Illustrator, Adobe InDesign, and Adobe Fresco</em></strong> the most, <strong><em>Lightroom</em></strong> for photo editing, and have a basic knowledge of <strong><em>Figma</em></strong>.
               </p>
               <p>
-                I do brand identity design as well; however, Illustration and Graphic Design is what I keep coming back to. I constantly seek inspiration to enhance my creativity by reading books, articles, surfing the internet, and watching tutorials.
+                I have a proclivity towards book cover design, illustrations, and drawing.I translate stories, ideas and emotions into visual imagery through illustration, drawing, sketching, typography, composition and imagery etc. I constantly seek inspiration to enhance my creativity by reading books, articles, surfing the internet, so on and so forth.
               </p>
               <p>
                 When I'm not working, you can usually find me wandering around a bookstore, immersing myself in books, movie scripts, and indulging in drawing and sketching, allowing myself to be transcended to another realm. I consider myself a lifelong learner, student, and nobody.
