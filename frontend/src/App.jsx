@@ -78,6 +78,17 @@ function App() {
         />
 
         <Route
+          path="/work/sketch-book"
+          element={
+            <>
+              <Navbar />
+              <Work />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
           path="/work/collections"
           element={
             <>

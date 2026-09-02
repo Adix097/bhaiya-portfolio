@@ -5,6 +5,7 @@ import TypedCollections from "./TypedCollections";
 const TABS = [
   { key: "book-covers", label: "Book Covers", path: "/work/book-covers" },
   { key: "illustrations", label: "Illustrations", path: "/work/illustrations" },
+  { key: "sketch-book", label: "Sketch Book", path: "/work/sketch-book" },
   { key: "collections", label: "Collections", path: "/work/collections" },
   { key: "brand-campaigns", label: "Branding/Campaigns", path: "/work/brand" },
 ];

@@ -8,7 +8,7 @@ import Lightbox from "../components/Lightbox";
 
 const CollectionDetail = () => {
   const { slug, type } = useParams();
-  const backTo = type && ["book-covers", "illustrations", "collections"].includes(type)
+  const backTo = type && ["book-covers", "illustrations", "sketch-book", "collections"].includes(type)
     ? `/work/${type}`
     : "/work/book-covers";
 

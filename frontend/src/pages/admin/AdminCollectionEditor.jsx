@@ -353,6 +353,7 @@ const AdminCollectionEditor = () => {
           >
             <option value="book-covers">Book Covers</option>
             <option value="illustrations">Illustrations</option>
+            <option value="sketch-book">Sketch Book</option>
             <option value="collections">Collections</option>
           </select>
         </div>
