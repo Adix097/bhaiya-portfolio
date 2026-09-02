@@ -39,7 +39,7 @@ const TypedCollections = ({ type }) => {
         <Link
           key={collection.slug}
           to={`/work/${type}/${collection.slug}`}
-          className="group relative mb-3 block break-inside-avoid overflow-hidden rounded-xl"
+          className="group relative mb-3 block break-inside-avoid overflow-hidden"
         >
           <img
             src={collection.coverImage.url}
