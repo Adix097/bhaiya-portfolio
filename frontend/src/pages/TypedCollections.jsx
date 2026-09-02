@@ -57,7 +57,7 @@ const TypedCollections = ({ type }) => {
 
                         <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        <div className="absolute inset-x-0 bottom-0 p-3 flex items-center justify-between text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                             {showCategory && (
                                 <span className="text-[11px] font-medium tracking-normal normal-case">
                                     {category}
@@ -71,7 +71,7 @@ const TypedCollections = ({ type }) => {
                                 strokeWidth="2.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="h-4 w-4"
+                                className="ml-auto h-4 w-4"
                                 aria-label="Open project"
                             >
                                 <path d="M5 12h14" />
