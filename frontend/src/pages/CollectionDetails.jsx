@@ -7,7 +7,11 @@ import { getCollection } from "../lib/api";
 import Lightbox from "../components/Lightbox";
 
 const CollectionDetail = () => {
-  const { slug } = useParams();
+  const { slug, type } = useParams();
+  const backTo = type && ["book-covers", "illustrations", "collections"].includes(type)
+    ? `/work/${type}`
+    : "/work/book-covers";
+
   const {
     data: collection,
     loading,
@@ -37,7 +41,7 @@ const CollectionDetail = () => {
       <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen flex flex-col items-center justify-center gap-6">
         <p className="text-lg text-(--muted-text)">Collection not found.</p>
         <Link
-          to="/work/collections"
+          to={backTo}
           className="inline-flex items-center gap-2 text-secondary text-(--primary-cta) hover:text-(--hero-text) transition-colors"
         >
           <HiChevronLeft size={16} /> Back to Work
@@ -55,7 +59,7 @@ const CollectionDetail = () => {
   return (
     <main className="px-6 md:px-12 lg:px-18 pt-32 pb-24 min-h-screen">
       <Link
-        to="/work/collections"
+        to={backTo}
         className="inline-flex items-center gap-2 text-secondary text-(--muted-text) hover:text-(--hero-text) transition-colors mb-12"
       >
         <HiChevronLeft size={16} /> Back to Work

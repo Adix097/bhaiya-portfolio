@@ -35,27 +35,36 @@ const TypedCollections = ({ type }) => {
 
   return (
     <div className="columns-2 gap-3 md:columns-3 xl:columns-4">
-      {collections.map((collection) => {
-        const title = collection.metadata?.find((m) => m.label === "Category")?.value ?? collection.title;
+      {collections.map((collection) => (
+        <Link
+          key={collection.slug}
+          to={`/work/${type}/${collection.slug}`}
+          className="group relative mb-3 block break-inside-avoid overflow-hidden rounded-xl"
+        >
+          <img
+            src={collection.coverImage.url}
+            alt={collection.title}
+            loading="lazy"
+            className="w-full object-cover"
+          />
 
-        return (
-          <Link
-            key={collection.slug}
-            to={`/work/${type}/${collection.slug}`}
-            className="group relative mb-3 block break-inside-avoid overflow-hidden rounded-xl"
-          >
-            <img
-              src={collection.coverImage.url}
-              alt={collection.title}
-              loading="lazy"
-              className="w-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-xl">
-              <h3 className="p-5 text-xl font-semibold text-white">{title}</h3>
-            </div>
-          </Link>
-        );
-      })}
+          <span className="absolute bottom-3 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-white/90 text-black opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-3.5 w-3.5"
+              aria-label="Open project"
+            >
+              <path d="M5 12h14" />
+              <path d="M13 5l7 7-7 7" />
+            </svg>
+          </span>
+        </Link>
+      ))}
     </div>
   );
 };
